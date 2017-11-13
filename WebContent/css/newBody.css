@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+#cuerpo-titulo {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#cuerpo-titulo .contenedor h3{
+    margin-bottom: 30px;
+}
+
+.info {
+	margin-right: 20px;
+}
+
+.menu-viaje {
+	margin-top: 25px;
+}
+
+.combo {
+	margin: 5px 45px 5px 5px;
+	padding: 5px 10px 5px 10px;
+	
+}
+
+.fecha {
+	padding: 5px 10px 5px 10px;	
+}
+
+.boton_personalizado{
+	margin: 15px 5px 5px 5px;
+    text-decoration: none;
+    padding: 10px 20px 10px 20px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #333;
+    border-radius: 6px;
+    border: 2px solid red;
+	margin-bottom: 30px;
+  }
+  
+
+.boton_personalizado:hover{
+    color: #1883ba;
+    background-color: #ffffff;	
+  }
+
+
+#cuerpo-principal h3,
+h4 {
+	text-align: center;
+}
+
+#cuerpo-principal .contenedor {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+#cuerpo-principal article {
+	margin: 15px;
+}
+
+#cuerpo-principal img {
+	width: 100%;
+	max-width: 280px;
+	border: 2px solid #ffff00;
+	border-radius: 5px;
+}
+

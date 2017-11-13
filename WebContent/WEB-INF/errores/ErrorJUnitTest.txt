@@ -1,0 +1,27 @@
+java.lang.UnsupportedClassVersionError: com/cvpsa/appagenciaviajes/common/services/BusServiceTest2 : Unsupported major.minor version 52.0
+	at java.lang.ClassLoader.defineClass1(Native Method)
+	at java.lang.ClassLoader.defineClass(Unknown Source)
+	at java.security.SecureClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.defineClass(Unknown Source)
+	at java.net.URLClassLoader.access$100(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.net.URLClassLoader$1.run(Unknown Source)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.loadClass(RemoteTestRunner.java:685)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.loadClasses(RemoteTestRunner.java:421)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:444)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+	
+	/**--------------------------------------------------------------------------*/
+			DEBIDO A LA VERSIÓN DE JDK, INCOMPATIBILIDAD 7 Y 8
+	/**--------------------------------------------------------------------------*/
+	
+	
+	

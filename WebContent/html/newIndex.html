@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>:: Agencia de Viaje C.V.P ::</title>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+
+<link rel="shortcut icon" href="imagenes/viajes.ico" />
+<link rel="stylesheet" href="css/newSlider.css">
+<link rel="stylesheet" href="css/newBody.css">
+
+</head>
+<body>
+	<header>
+		<div class="contenedor">
+			<h1>Agencia de Viaje C.V.Paaaaaavvvvvvrrr</h1>
+	
+
+		</div>
+	</header>
+
+	<main>
+
+
+	<section id="bienvenidos">
+		<div class="contenedor">
+			<h2>Reserva y compra tus pasajes al instante!</h2>
+
+			<div class="menu-viaje">
+
+				<form action="">
+					<input type="hidden" value="listarViajesPorOrigenDestinoFecha"
+						name="operacion"> <label>Origen:</label> <select
+						class="combo" name="cboDepartamentoPartida">
+						<libreria:Departamento />
+					</select> <label>Destino:</label> <select class="combo"
+						name="cboDepartamentoLlegada">
+						<libreria:Departamento />
+					</select> <label>Fec salida:</label> <input class="fecha" type="date"
+						name="dtFechaSalida" />
+					<!-- 		<label>Fec -->
+					<!-- 			llegada:</label> <input type="date" /> -->
+
+					<p>
+						<input class="boton_personalizado" type="submit" value="Buscar"
+							onclick=this.form.action="ViajeServlet">
+					</p>
+				</form>
+			</div>
+		</div>
+	</section>
+
+	</main>
+
+
+
+	<script src="js/newJquery-min.js"></script>
+	<script type="text/javascript" src="js/newSlider.js"></script>
+
+</body>
+</html>

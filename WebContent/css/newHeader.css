@@ -1,0 +1,26 @@
+@charset "utf-8";
+
+header {
+	background-color: #333;
+	height: 50px;
+	width: 100%;
+	color: #fff;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+
+
+/* Aplicado al título */
+
+h1 {
+	float: left;
+}
+
+
+header .contenedor {
+	display: table;
+}
+
+/*Aplicado al menú */

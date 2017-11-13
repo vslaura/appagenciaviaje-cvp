@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Estructura del archivo librería.tld -->
+<taglib>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.0</jspversion>
+	<shortname>Ejemplos de Custom Tags</shortname>
+
+	<!-- definicion por cada etiquetas -->
+
+	<tag>
+		<name>EstadoBuses</name>
+		<tagclass>com.cvpsa.appagenciaviajes.business.etiquetas.EstadoBusTag
+		</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Carga los estado que puede tener un bus</info>
+	</tag>
+
+	<tag>
+		<name>generarCodigoBus</name>
+		<tagclass>com.cvpsa.appagenciaviajes.business.etiquetas.GenerarCodigoBus
+		</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Generar el codigo del bus</info>
+	</tag>
+
+	<tag>
+		<name>generarCodigoCliente</name>
+		<tagclass>com.cvpsa.appagenciaviajes.business.etiquetas.GenerarCodigoCliente
+		</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Generar el codigo del cliente</info>
+	</tag>
+
+
+
+	<tag>
+		<name>generarCodigoEmpleado</name>
+		<tagclass>com.cvpsa.appagenciaviajes.business.etiquetas.GenerarCodigoEmpleado
+		</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Generar el codigo del empleado</info>
+	</tag>
+
+<tag>
+		<name>categoriaEmpleado</name>
+		<tagclass>com.cvpsa.appagenciaviajes.business.etiquetas.CategoriaEmpleadoTag
+		</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Carga la categoria del empleado</info>
+	</tag>
+
+
+
+	<tag>
+		<name>Departamento</name>
+		<tagclass>com.cvpsa.appagenciaviajes.business.etiquetas.DepartamentoTag
+		</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Carga los departamentos Origen y Destino</info>
+	</tag>
+
+
+
+	<tag>
+		<name>generarCodigoDepartamento</name>
+		<tagclass>com.cvpsa.appagenciaviajes.business.etiquetas.GenerarCodigoDepartamento
+		</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Generar el codigo del departamento</info>
+	</tag>
+
+
+	<!-- <tag> -->
+	<!-- <name>fechaactual</name> -->
+	<!-- <tagclass>etiquetas.FechaActualTag</tagclass> -->
+	<!-- <bodycontent>empty</bodycontent> -->
+	<!-- <info>Muestra la fecha actual</info> -->
+	<!-- </tag> -->
+
+	<!-- <tag> -->
+	<!-- <name>horaactual</name> -->
+	<!-- <tagclass>etiquetas.HoraActualTag</tagclass> -->
+	<!-- <bodycontent>empty</bodycontent> -->
+	<!-- <info>Muestra la hora actual</info> -->
+	<!-- </tag> -->
+
+
+
+</taglib>

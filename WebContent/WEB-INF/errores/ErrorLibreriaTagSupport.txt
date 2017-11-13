@@ -1,0 +1,3 @@
+
+public class codigoGeneroTag extends TagSupport{ // Para importar el TagSupport requiere las librerias del tomcat con el cual se va a trabajar, en este caso Tomcat 7, las librerias son:
+jsp-api.jar,servlet-api.jar,tomcat-api.jar

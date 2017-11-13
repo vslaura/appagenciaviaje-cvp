@@ -1,0 +1,168 @@
+<!Doctype html>
+<html lang="es">
+
+<head>
+	<!-- Título de la página -->
+	<title>|| Sistema HNDAC || > Registrar solicitud de LSGH</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+
+	<!--Ícono de la página-->
+	<link rel="shortcut icon" href="imagenes/favicon.ico" />
+
+	<!-- Enlace con la hoja de estilos (style.css )-->
+	<link rel="stylesheet" href="css/styleMenu.css">
+	<link rel="stylesheet" href="css/newTemp.css">
+
+	<!-- <script type="text/javascript" src="js/frm.js"></script> -->
+	<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="js/codigo.js"></script>
+
+</head>
+
+<!-- Inicia el cuerpo de la página -->
+
+<body onload="mostrarFecha()">
+	<header>
+
+	</header>
+
+	<main>
+		<section id="contacto">
+
+			<div class="contenedor">
+
+				<form action="RegistrarSolicitudLServlet" method="post">
+
+					<h2>Registrar solicitud de LSGH</h2>
+
+					<table>
+						<tr>
+							<td style="text-align: left; font-weight: bold;"><label>Número:</label></td>
+							<td><input type="text" name="txtNumSol" readonly="readonly" value='<libreria:generarNumSolicitud/>'></td>
+						</tr>
+						<tr>
+							<td style="text-align: left; font-weight: bold;"><label>Fecha:</label></td>
+							<td><input type="text" value='<libreria:fechaactual/>' readonly="readonly" name="txtFecRegSol"></td>
+							<td style="text-align: right; font-weight: bold;"><label>Hora:</label></td>
+							<td><input type="text" value='<libreria:horaactual/>' readonly="readonly" name="txtHoraSol"></td>
+						</tr>
+						<tr>
+							<td><br></td>
+						</tr>
+						<tr>
+							<td colspan="5"><span>Datos del trabajador</span>
+								<hr>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align: right"><label>Código:</label></td>
+							<td><input type="text" name="txtCodTrab" value="${param.codTrab}" readonly="readonly"></td>
+							<td style="text-align: right;"><label>Cargo:</label></td>
+							<td><input type="text" name="txtCarTrab" readonly="readonly" value="${param.desCar}"></td>
+							<td><input type="submit" name="btnConsultar" id="boton" value="Buscar Trabajador" onclick=this.form.action="Frm16_BuscarTrabajador.jsp?lt_sf=1">
+						</tr>
+						<tr>
+							<td style="text-align: right;"><label>Nombres:</label></td>
+							<td><input type="text" name="txtNomTrab" readonly="readonly" value="${param.nomTrab}"></td>
+							<td style="text-align: right;"><label>Teléfono:</label></td>
+							<td><input type="text" name="txtTelTrab" readonly="readonly" value="${param.telTrab}"></td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><label>Apellidos:</label></td>
+							<td><input type="text" name="txtApeTrab" readonly="readonly" value="${param.apeTrab}"></td>
+							<td style="text-align: right;"><label>Correo:</label></td>
+							<td><input type="text" name="txtCorrTrab" value="${param.emlTrab}" readonly="readonly"></td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><label>Tiem. serv:</label></td>
+							<td><input type="text" name="txtTiemTrab" value="${param.tmpSer}" readonly="readonly"></td>
+						</tr>
+						<tr>
+							<td><br></td>
+						</tr>
+						<tr>
+							<td colspan="5"><span>Datos de la solicitud</span>
+								<hr>
+							</td>
+						</tr>
+						<tr>
+							<td style="text-align: right"><label>Motivo:</label></td>
+							<td colspan="3"><input type="text" name="txtMotSol"></td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><label>Fec. solicitud:</label></td>
+							<td><input type="date" name="txtFecSol"></td>
+							<td style="text-align: right;"><label>Fec. inicio
+								licencia:</label></td>
+							<td><input type="date" name="txtFecIniLic"></td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><label>Cant. días:</label></td>
+							<td><input type="number" name="txtCantDiasSol" onchange="suma_y_muestra()"></td>
+							<td style="text-align: right;"><label>Fec. fin
+								licencia:</label></td>
+							<td><input type="date" name="txtFecFinLic" id="txtFecFinLic"></td>
+						</tr>
+						<tr>
+							<td style="text-align: right;"><label>Estado:</label></td>
+							<td><select name="cboEstSol">
+							<option value="0">Seleccione</option>
+							<option value="1">En proceso</option>
+							<option value="2">Cancelado</option>							
+						</select>
+							</td>
+
+						</tr>
+
+						<tr>
+							<td><br></td>
+						</tr>
+						<tr>
+							<td colspan="4"><span>Observaciones y/o anotaciones:</span>
+								<hr>
+							</td>
+							<td style="text-align: center;"><input type="submit" id="addRows" class="btnPequenio" value="Agregar"></td>
+						</tr>
+						<tr class="border">
+							<td style="text-align: center;"><label>Nro. obs.</label></td>
+							<td colspan="3" style="text-align: center;"><label>Descripción</label></td>
+						</tr>
+						<tr class="border">
+							<td style="text-align: center;"><label>1</label></td>
+							<td colspan="3" style="text-align: center;"><input type="text" name="txtObs1"></td>
+							<td style="text-align: center;"><input type="submit" class="btnPequenio" value="Quitar"></td>
+						</tr>
+						<tr class="border">
+							<td style="text-align: center;"><label>2</label></td>
+							<td colspan="3" style="text-align: center;"><input type="text" name="txtObs2"></td>
+							<td style="text-align: center;"><input type="submit" class="btnPequenio" value="Quitar"></td>
+						</tr>
+						<tr class="border">
+							<td style="text-align: center;"><label>3</label></td>
+							<td colspan="3" style="text-align: center;"><input type="text" name="txtObs3"></td>
+							<td style="text-align: center;"><input type="submit" class="btnPequenio" value="Quitar"></td>
+						</tr>
+
+						<tr style="margin-top: 100px;">
+							<td colspan="5" style="text-align: center;"><br></td>
+						</tr>
+						<tr>
+							<td colspan="5" style="text-align: center;"><input type="submit" class="btnform" value="Grabar"> <input type="submit" class="btnform" value="Salir"> <input type="submit" class="btnform" value="Exportar a PDF"> <br>
+								<br> <br></td>
+						</tr>
+					</table>
+				</form>
+
+			</div>
+
+		</section>
+
+	</main>
+
+</body>
+<!-- Terminó el cuerpo de la página -->
+
+<footer> </footer>
+
+</html>
