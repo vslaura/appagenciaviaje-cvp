@@ -43,4 +43,13 @@ public class ClienteServiceTest {
 	public void buscarCliente_Test ( ) {
 		System.out.println(clienteService.buscarCliente("pedro300", "miClave").getNomCli());
 	}
+	
+	@Test
+	public void actualizarCliente_test() {
+		ClienteDTO clienteDTO =new  ClienteDTO("C0001", "34563543", "Juan", "Hidalgo", "juan@gmil.com", "j1090", "clave");
+		//System.out.println(clienteService.actualizarUsuario("pedro300","Torres Fuentes","Pedro89@gmail.com","pedro300","miClave").getCodCli());
+	
+		int resultado = clienteService.actualizarUsuario(clienteDTO);
+		assertTrue(resultado == 1);
+	}
 }

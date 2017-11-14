@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -65,6 +66,7 @@ public class ClienteServlet extends HttpServlet {
 			registarCliente(request, response);
 			break;
 		case "modificarCliente":
+			modificarCliente(request, response);
 			break;
 		case "iniciarSesion":
 			iniciarSesion(request, response);
@@ -193,6 +195,52 @@ public class ClienteServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
+	}
+	
+	private void modificarCliente(HttpServletRequest request, HttpServletResponse response) {
+		
+
+		String codCli = request.getParameter("txtCodigoCliente");
+		String dniCli = request.getParameter("txtDNI");
+		String nomCli = request.getParameter("txtNombres");
+		String apeCli = request.getParameter("txtApellidos");
+		String emailCli = request.getParameter("txtEmail");
+		String usuCli = request.getParameter("txtUsuario");
+		String claveCli = request.getParameter("txtClave");
+		
+		ClienteDTO clienteDTO = new ClienteDTO(codCli, dniCli, nomCli, apeCli, emailCli, usuCli, claveCli);
+
+		System.out.println(clienteDTO.toString());
+
+		ClienteService clienteService = new ClienteService();
+
+		int resultado = clienteService.actualizarUsuario(clienteDTO);
+		if (resultado != 0) {
+
+			HttpSession sesion = request.getSession();
+			
+			sesion.setAttribute("usuarioSession", clienteDTO);
+			
+			RequestDispatcher rdispatcher = request.getRequestDispatcher("/newActualizarCliente.jsp");
+			request.setAttribute("mensajeError", "Datos Incorrectos");
+			
+			try{
+				rdispatcher.forward(request, response);
+			}catch (ServletException | IOException e){
+				System.out.println("erros");
+			}
+		}
+		else {
+				RequestDispatcher rdispatcher = request.getRequestDispatcher("/newActualizarCliente.jsp");
+				request.setAttribute("Exito", "Se actualizo los datos");
+			try{
+				rdispatcher.forward(request, response);
+			} catch (ServletException | IOException e) {
+				System.out.println("Error al ir a actualizar Los datos.");
+			}
+
+	   }
+	
 	}
 
 }

@@ -6,6 +6,7 @@ import com.cvpsa.appagenciaviajes.business.bean.ClienteDTO;
 import com.cvpsa.appagenciaviajes.business.dao.DAOFactory;
 import com.cvpsa.appagenciaviajes.business.interfaces.ClienteDAO;
 
+
 public class ClienteService {
 
 	DAOFactory factory = DAOFactory.getDAOFactory(1);
@@ -25,5 +26,10 @@ public class ClienteService {
 	
 	public ClienteDTO buscarCliente ( String nombreUsuario, String clave ) {
 		return getClienteDAO.buscarCliente(nombreUsuario, clave);
+	}
+	
+	// actualiza Usuario
+	public int actualizarUsuario(ClienteDTO clienteDTO) {
+		return getClienteDAO.actualizarCliente( clienteDTO);
 	}
 }

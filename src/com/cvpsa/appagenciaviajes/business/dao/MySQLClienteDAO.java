@@ -52,8 +52,42 @@ public class MySQLClienteDAO implements ClienteDAO {
 
 	@Override
 	public int actualizarCliente(ClienteDTO clienteDTO) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		Connection con = null;
+		PreparedStatement pst = null;
+		int rs = 0;
+		try {
+			
+			con = MySQLConexion.getConexion(); 
+
+			String sql = "update tb_cliente  set nom_cli =?, apell_cli =?,email_cli =?,usu_cli =?,cla_cli =? where cod_cli =?";
+			pst = con.prepareStatement(sql);
+			
+			
+			pst.setString(1, clienteDTO.getNomCli());
+			pst.setString(2, clienteDTO.getApeCli());
+			pst.setString(3, clienteDTO.getEmailCli());
+			pst.setString(4, clienteDTO.getUsuarioCli());
+			pst.setString(5, clienteDTO.getClaveCli());
+			pst.setString(6, clienteDTO.getCodCli());
+			
+			rs = pst.executeUpdate();
+		
+			System.out.println("Actualizacion con exito");
+			
+		} catch (Exception e) {
+			System.out.println("Error en la sentencia al Actualizar cliente: " + e);
+		} finally {
+			try {
+				if (pst != null)
+					pst.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				System.out.println("Error al cerrar.");
+			}
+		}
+		return rs;
 	}
 
 	@Override
