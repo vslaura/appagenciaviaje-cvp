@@ -2,15 +2,17 @@ package com.cvpsa.appagenciaviajes.business.services;
 
 import static org.junit.Assert.*;
 
-import java.util.List;
+import java.util.Locale;
 
 import org.junit.Test;
 
 import com.cvpsa.appagenciaviajes.business.bean.ClienteDTO;
+import com.github.javafaker.Faker;
 
 public class ClienteServiceTest {
 
 	ClienteService clienteService = new ClienteService();
+	Faker faker = new Faker ( new Locale( "EN" ) );
 
 	@Test
 	public void listarClientes_test() {
@@ -23,11 +25,16 @@ public class ClienteServiceTest {
 
 	@Test
 	public void registrarCliente_test() {
-	
-		ClienteDTO clienteDTO = new ClienteDTO(clienteService.obtenerCodigoAutogenerado(), "45879568", "Juan",
-				"Montoya Tipiana", "jorge@gmail.com", "jorge2000", "miClave");
 
-		int resultado = clienteService.registrarEmpleados(clienteDTO);
+		int resultado = 0;
+		
+//		for (int i = 0; i < 10; i++) {
+			ClienteDTO clienteDTO = new ClienteDTO(clienteService.obtenerCodigoAutogenerado(), faker.code().ean8(), faker.name().firstName(),
+					faker.name().lastName() + faker.name().lastName(), faker.name().firstName() + "@gmail.com", faker.name().firstName(), faker.name().lastName());
+			System.out.println(clienteDTO.getCodCli() + " " + clienteDTO.getNomCli() + " " + clienteDTO.getApeCli() + " " + clienteDTO.getDniCli() + " " + clienteDTO.getEmailCli() + " " + clienteDTO.getUsuarioCli() + " " + clienteDTO.getClaveCli());
+			resultado = clienteService.registrarEmpleados(clienteDTO);
+//		}
+
 		assertTrue(resultado == 1);
 	}
 

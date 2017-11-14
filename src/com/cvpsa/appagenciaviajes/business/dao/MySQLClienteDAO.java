@@ -9,10 +9,13 @@ import java.util.List;
 
 import com.cvpsa.appagenciaviajes.business.bean.ClienteDTO;
 import com.cvpsa.appagenciaviajes.business.interfaces.ClienteDAO;
+import com.cvpsa.appagenciaviajes.business.utils.DataBase;
 import com.cvpsa.appagenciaviajes.business.utils.MySQLConexion;
 
 public class MySQLClienteDAO implements ClienteDAO {
 
+	DataBase dataBase = new DataBase();
+	
 	@Override
 	public int registrarCliente(ClienteDTO clienteDTO) {
 		
@@ -32,6 +35,8 @@ public class MySQLClienteDAO implements ClienteDAO {
 			pst.setString(5, clienteDTO.getEmailCli());
 			pst.setString(6, clienteDTO.getUsuarioCli());
 			pst.setString(7, clienteDTO.getClaveCli());
+			
+			dataBase.almacenarInsercion("cliente", pst.toString(), "cliente.txt");
 			
 			rs = pst.executeUpdate();
 
