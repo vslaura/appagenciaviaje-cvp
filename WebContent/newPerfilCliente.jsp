@@ -74,23 +74,23 @@
 							</tr>
 							<tr>
 								<td><label for="">DNI:</label></td>																									
-								<td><input type="text" name="txtDNI" onkeypress="return soloNumeros(event)" required="required" placeholder="23456789" maxlength="8" minlength="8" value="${usuarioSession.getDniCli()}" readonly="readonly"></td>
+								<td><input type="text" name="txtDNI" value="${usuarioSession.getDniCli()}" readonly="readonly"></td>
 								<td><label for="">Nombres:</label></td>
-								<td><input type="text" name="txtNombres" onkeypress="return soloLetras(event)" required="required" placeholder="Laura" maxlength="30" minlength="8" value= "${usuarioSession.getNomCli()}" readonly="readonly"></td>
+								<td><input type="text" name="txtNombres" value= "${usuarioSession.getNomCli()}" readonly="readonly"></td>
 							</tr>
 							<tr>
 								<td><label for="">Apellidos:</label></td>
-								<td><input type="text" name="txtApellidos" onkeypress="return soloLetras(event)" required="required" placeholder="Valdivia Sánchez" minlength="8" value= "${usuarioSession.getApeCli()}" readonly="readonly"></td>
+								<td><input type="text" name="txtApellidos" value= "${usuarioSession.getApeCli()}" readonly="readonly"></td>
 
 								<td><label for="">E-mail:</label></td>
-								<td><input type="email" name="txtEmail" required="required" placeholder="miCorreo@gmail.com" maxlength="50" value= "${usuarioSession.getEmailCli()}" readonly="readonly"></td>
+								<td><input type="email" name="txtEmail" value= "${usuarioSession.getEmailCli()}" readonly="readonly"></td>
 							</tr>
 							<tr>
 								<td><label for="">Usuario:</label></td>
 
-								<td><input type="text" name="txtUsuario" required="required" placeholder="laura456" maxlength="20" minlength="4" value= "${usuarioSession.getUsuarioCli()}" readonly="readonly"></td>
+								<td><input type="text" name="txtUsuario" value= "${usuarioSession.getUsuarioCli()}" readonly="readonly"></td>
 								<td><label for="">Clave:</label></td>
-								<td><input type="password" name="txtClave" required="required" placeholder="miClave" maxlength="20" minlength="4" value= "${usuarioSession.getClaveCli()}" readonly="readonly"></td>
+								<td><input type="password" name="txtClave" value= "${usuarioSession.getClaveCli()}" readonly="readonly"></td>
 							</tr>
 							<tr>
 								<td><br></td>
