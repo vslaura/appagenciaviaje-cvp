@@ -218,6 +218,37 @@ insert into tb_viaje values('V0030','EC002','B0002','2017/11/05','2017/12/28','D
 
 insert into tb_cliente values ('C0001','89787656','Pedro','Torres Fuentes','Pedro89@gmail.com', 'pedro300', 'miClave');
 insert into tb_cliente values ('C0002','89787658','Gian Carlos','Macedo Valdivia','GianMacedo@gmail.com', 'g456', 'miClave');
+insert into tb_cliente values ('C0003', '79642439', 'Nelson', 'BrownStamm', 'Icie@gmail.com', 'Keeley', 'Jacobi');
+insert into tb_cliente values ('C0004', '81667345', 'Roberto', 'HintzCollier', 'Lester@gmail.com', 'Dayne', 'Wilkinson');
+insert into tb_cliente values ('C0005', '67539369', 'Doris', 'StarkFisher', 'Niko@gmail.com', 'Demetris', 'Bartell');
+insert into tb_cliente values ('C0006', '40043364', 'Mabel', 'VandervortWelch', 'Brett@gmail.com', 'Ophelia', 'Steuber');
+insert into tb_cliente values ('C0007', '36934331', 'Urban', 'HillsZiemann', 'Jerrod@gmail.com', 'Jerrold', 'Quitzon');
+insert into tb_cliente values ('C0008', '80095354', 'Gia', 'KreigerHackett', 'Oleta@gmail.com', 'Lilian', 'Streich');
+insert into tb_cliente values ('C0009', '79652001', 'Dock', 'FritschAnkunding', 'Dejon@gmail.com', 'Jaylon', 'Auer');
+insert into tb_cliente values ('C0010', '37996758', 'Carrie', 'MosciskiCronin', 'Elyssa@gmail.com', 'Dameon', 'Greenfelder');
+insert into tb_cliente values ('C0011', '17144285', 'Xander', 'RosenbaumPfannerstill', 'Melyssa@gmail.com', 'Abdullah', 'Oberbrunner');
+insert into tb_cliente values ('C0012', '57316970', 'Tom', 'SipesCollins', 'Ramon@gmail.com', 'Maybell', 'Weissnat');
+insert into tb_cliente values ('C0013', '22595324', 'Reilly', 'ParkerOKeefe', 'Hattie@gmail.com', 'Connor', 'Schoen');
+insert into tb_cliente values ('C0014', '53618245', 'Cassandre', 'KrajcikLebsack', 'Vivianne@gmail.com', 'Hilario', 'Champlin');
+insert into tb_cliente values ('C0015', '11216667', 'Melody', 'ErdmanSchimmel', 'Amya@gmail.com', 'Dandre', 'Crooks');
+insert into tb_cliente values ('C0016', '02265353', 'Donald', 'HowellJones', 'Amanda@gmail.com', 'Darion', 'Wilkinson');
+insert into tb_cliente values ('C0017', '85485129', 'Ariel', 'BergstromYost', 'Winnifred@gmail.com', 'Mariana', 'Feeney');
+insert into tb_cliente values ('C0018', '82069292', 'Meagan', 'HowellEffertz', 'Jaylen@gmail.com', 'Garfield', 'Reichert');
+insert into tb_cliente values ('C0019', '09571341', 'Jena', 'BarrowsFerry', 'London@gmail.com', 'Everette', 'Barrows');
+insert into tb_cliente values ('C0020', '66112822', 'Elroy', 'CreminDaugherty', 'Emil@gmail.com', 'Meghan', 'Nikolaus');
+insert into tb_cliente values ('C0021', '80001768', 'Benjamin', 'JaskolskiKuphal', 'Kody@gmail.com', 'Justus', 'Haag');
+insert into tb_cliente values ('C0022', '59701057', 'Lester', 'HeathcoteRath', 'Noe@gmail.com', 'Brielle', 'Homenick');
+insert into tb_cliente values ('C0023', '85380608', 'Rosalind', 'BoyerBogan', 'Clay@gmail.com', 'Rowland', 'Welch');
+insert into tb_cliente values ('C0024', '81364091', 'Valerie', 'PourosMetz', 'Justina@gmail.com', 'Erika', 'Klein');
+insert into tb_cliente values ('C0025', '42118879', 'Aniyah', 'BogisichSkiles', 'Mavis@gmail.com', 'Georgiana', 'Schumm');
+insert into tb_cliente values ('C0026', '48303491', 'Maxine', 'RutherfordCorkery', 'Korey@gmail.com', 'Stephany', 'Runolfsson');
+insert into tb_cliente values ('C0027', '96486375', 'Bonnie', 'StrosinRodriguez', 'Christ@gmail.com', 'Vincenza', 'Monahan');
+insert into tb_cliente values ('C0028', '09329645', 'Haskell', 'VolkmanTorphy', 'Tiara@gmail.com', 'Annamae', 'Robel');
+insert into tb_cliente values ('C0029', '26942162', 'Erwin', 'VeumKertzmann', 'Clyde@gmail.com', 'Damaris', 'Kon');
+insert into tb_cliente values ('C0030', '05304752', 'Tiffany', 'BalistreriHarris', 'Tania@gmail.com', 'Josiah', 'Crona');
+insert into tb_cliente values ('C0031', '88680729', 'Ignatius', 'PurdyCorwin', 'Adan@gmail.com', 'Morgan', 'Towne');
+insert into tb_cliente values ('C0032', '52838699', 'Juana', 'MarksConroy', 'Arlo@gmail.com', 'Hobart', 'Fahey');
+
 
 insert into tb_pasaje values ('P0001',30,60,'2017/12/28','C0001','V0001');
 insert into tb_pasaje values ('P0002',30,60,'2017/12/28','C0001','V0002');
