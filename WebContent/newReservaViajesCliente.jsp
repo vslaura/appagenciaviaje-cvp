@@ -14,17 +14,17 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
 
-	<link rel="shortcut icon" href="imagenes/viajes.ico" />
+	<link rel="shortcut icon" href="imagenes/viajes.ico" />	
 
 	<link rel="stylesheet" href="css/newStyle.css" />
 	<link rel="stylesheet" href="css/newHeader.css" />
 	<link rel="stylesheet" href="css/newMenu.css">
-	<link rel="stylesheet" href="css/newPerfilCliente.css">
+	<link rel="stylesheet" href="css/newSlider.css" />
+	<link rel="stylesheet" href="css/newBody.css" />
 	<link rel="stylesheet" href="css/newInformacion.css">
 	<link rel="stylesheet" href="css/newFooter.css" />
-
-	<script type="text/javascript" src="js/ValidacionCampos.js"></script>
-
+	
+	<link rel="stylesheet" href="css/newDisplaytag.css">
 </head>
 
 <body>
@@ -48,66 +48,48 @@
 				<c:if test="${ usuarioSession == null }">
 					<a href="newLogin.jsp">Acceso</a>
 				</c:if>
-
+				
+			
 			</nav>
 		</div>
 	</header>
 	<main>
+		<section>
+			<div class="contenedor-slider" id="contenedor-slider">
+				<div class="slider" id="slider">
+					<section class="slider__section">
+						<img class="slider__img" src="imagenes/index/banner.jpg" />
+					</section>
+					<section class="slider__section">
+						<img class="slider__img" src="imagenes/index/banner.jpg" />
+					</section>
+					<section class="slider__section">
+						<img class="slider__img" src="imagenes/index/banner.jpg" />
+					</section>
+					<section class="slider__section">
+						<img class="slider__img" src="imagenes/index/banner.jpg" />
+					</section>
+				</div>
+				<div class="btn-prev" id="btn-prev"><</div>
+				<div class="btn-next" id="btn-next">></div>
+
+			</div>
+		</section>
 
 		<section id="cuerpo-titulo">
 			<div class="contenedor">
-				<h2>Actualizar </h2>
-
-				<div class="cuerpo-formulario">
-					<form action="">
-
-						<input type="hidden" value="modificarCliente" name="operacion">
-						<input type="hidden" value="${usuarioSession.getCodCli()}" name="txtCodigoCliente">
-
-						<table>
-
-							<tr>
-
-								<td colspan="4"><span>Mis datos</span>
-									<hr> </td>
-							</tr>
-							<tr>
-								<td><label for="">DNI:</label></td>																									
-								<td><input type="text" name="txtDNI" value="${usuarioSession.getDniCli()}" readonly="readonly"></td>
-								<td><label for="">Nombres:</label></td>
-								<td><input type="text" name="txtNombres" onkeypress="return soloLetras(event)" required="required" placeholder="Laura" maxlength="30" value= "${usuarioSession.getNomCli()}"></td>
-							</tr>
-							<tr>
-								<td><label for="">Apellidos:</label></td>
-								<td><input type="text" name="txtApellidos" onkeypress="return soloLetras(event)" required="required" placeholder="Valdivia Sánchez" value= "${usuarioSession.getApeCli()}"></td>
-
-								<td><label for="">E-mail:</label></td>
-								<td><input type="email" name="txtEmail" required="required" placeholder="miCorreo@gmail.com" maxlength="50" value= "${usuarioSession.getEmailCli()}" ></td>
-							</tr>
-							<tr>
-								<td><label for="">Usuario:</label></td>
-
-								<td><input type="text" name="txtUsuario" required="required" placeholder="laura456" maxlength="20" minlength="4"  value= "${usuarioSession.getUsuarioCli()}" ></td>
-								<td><label for="">Clave:</label></td>
-								<td><input type="password" name="txtClave" required="required" placeholder="miClave" maxlength="20" minlength="4" value= "${usuarioSession.getClaveCli()}" ></td>
-							</tr>
-							<tr>
-								<td><br></td>
-							</tr>
-							<tr>
-								<td colspan="4" style="text-align: center;"><input type="submit" class="btn" value="Grabar" onclick=this.form.action="ClienteServlet">
-									<a href="newIndex.jsp"><input type="button" value="Salir" class="btn"></a>
-								</td>
-							</tr>
-
-						</table>
-					</form>
-				</div>
+				<h2>Mis Reservas</h2> <br>
 
 			</div>
+			<display:table name="${listaReservas}">
+				<display:column title="Codigo Reserva" property="codPje"></display:column>
+				<display:column title="Nro Asiento" property="nroAsientoPje"></display:column>
+				<display:column title="Precio" property="precPje"></display:column>
+				<display:column title="Fec. Compra" property="fechComPje"></display:column>
+				<display:column title="Cliente" property="codClie"></display:column>
+		
 
-
-
+			</display:table>
 
 		</section>
 

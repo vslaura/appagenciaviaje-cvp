@@ -1,0 +1,147 @@
+<!--
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@ taglib uri="../WEB-INF/libreria.tld" prefix="libreria"%>
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<title>:: Agencia de viajes C.V.P ::</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+
+	<link rel="stylesheet" href="css/newStyle.css" />
+	<link rel="stylesheet" href="css/newHeader.css" />
+	<link rel="stylesheet" href="css/newMenu.css">
+	<link rel="stylesheet" href="css/newBodyPasaje.css">
+	<link rel="stylesheet" href="css/newInformacion.css">
+	<link rel="stylesheet" href="css/newFooter.css" />
+	
+</head>
+
+<body>
+
+	<header>
+		<div class="contenedor">
+			<h1>Agencia de viajes C.V.P</h1>
+			<nav class="menu">
+				<a href="#">Inicio</a>
+				<a href="#">Quienes somos</a>
+				<a href="#">Acceso</a>
+			</nav>
+		</div>
+	</header>
+	<main>
+
+		<section id="cuerpo-titulo">
+			<div class="contenedor">
+				<h2>Reserve su pasaje</h2>
+
+				<div class="cuerpo-formulario">
+					<form action="">
+						<table>
+							<tr>
+								<td colspan="6"><span>Datos del pasaje</span>
+									<hr>
+								</td>
+							</tr>
+							<tr>
+								<td><label for="">Origen: </label></td>
+								<td><input type="text" value=${param.origen} name="txtOrigen"></td>
+								<td><label for="">Destino: </label></td>
+								<td><input type="text" value=${param.destino} name="txtDestino"></td>
+								<td><label for="">Fecha de viaje: </label></td>
+								<td><input type="text" value=${param.fechaDestino} name="dtFechaViaje"></td>
+							</tr>
+							<tr>
+								<td><label for="">Nro. asiento: </label></td>
+								<td><select name="cboAsiento" id=""><option value="">1</option><option value="">2</option></select></td>
+								<td><label for="">Precio: </label></td>
+								<td><input type="text" name="txtPrecio"></td>
+							</tr>
+							<tr>
+								<td><br></td>
+							</tr>
+							<tr>
+
+								<td colspan="6"><span>Datos del Cliente</span>
+									<hr> </td>
+							</tr>
+							<tr>
+								<td><label for="">DNI:</label></td>
+								<td><input type="text" name="txtDNI"></td>
+								<td><label for="">Nombres:</label></td>
+								<td><input type="text" name="txtNombres"></td>
+								<td><label for="">Apellidos:</label></td>
+								<td><input type="text" name="txtApellidos"></td>
+							</tr>
+							<tr>
+								<td><label for="">E-mail:</label></td>
+								<td><input type="email" name="txtEmail"></td>
+								<td><label for="">Teléfono:</label></td>
+								<td><input type="tel" name="txtTelefono"></td>
+							</tr>
+							<tr>
+								<td><br></td>
+							</tr>
+							<tr>
+								<td colspan="6"  style="text-align: center;"><input type="submit" class="btn" value="Reservar">
+								<input type="reset" value="Limpiar" class="btn">
+								</td>
+							</tr>
+
+						</table>
+					</form>
+				</div>
+
+			</div>
+
+
+
+
+		</section>
+
+		<section id="cuerpo-informacion">
+			<h3>Más de nuestros destinos</h3>
+			<div class="contenedor">
+				<div>
+					<img src="imagenes/index/img1.jpg" />
+					<h4>Comentario</h4>
+				</div>
+				<div>
+					<img src="imagenes/index/img1.jpg" />
+					<h4>Comentario</h4>
+				</div>
+				<div>
+					<img src="imagenes/index/img1.jpg" />
+					<h4>Comentario</h4>
+				</div>
+				<div>
+					<img src="imagenes/index/img1.jpg" />
+					<h4>Comentario</h4>
+				</div>
+			</div>
+
+		</section>
+
+	</main>
+
+	<footer class="contenedor">
+		<p class="copy">Agencia de viajes C.V.P &copy; 2017</p>
+		<div class="sociales">
+			<a class="icon-facebook-squared" href="#"></a>
+			<a class="icon-twitter-squared" href="#"></a>
+			<a class="icon-gmail-squared" href="#"></a>
+		</div>
+	</footer>
+
+	<script src="js/newJquery-min.js"></script>
+	<script src="js/newSlider.js"></script>
+
+</body>
+
+</html>

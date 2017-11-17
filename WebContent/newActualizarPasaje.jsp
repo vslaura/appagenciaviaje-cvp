@@ -4,8 +4,6 @@
 <%@ taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib uri="../WEB-INF/libreria.tld" prefix="libreria"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -19,9 +17,11 @@
 	<link rel="stylesheet" href="css/newStyle.css" />
 	<link rel="stylesheet" href="css/newHeader.css" />
 	<link rel="stylesheet" href="css/newMenu.css">
-	<link rel="stylesheet" href="css/newBodyResultado.css" />
+	<link rel="stylesheet" href="css/newBodyPasaje.css">
 	<link rel="stylesheet" href="css/newInformacion.css">
 	<link rel="stylesheet" href="css/newFooter.css" />
+	
+	<script type="text/javascript" src="js/ValidacionCampos.js"></script>
 
 </head>
 
@@ -33,19 +33,7 @@
 			<nav class="menu">
 				<a href="newIndex.jsp">Inicio</a>
 				<a href="#">Quienes somos</a>
-				<c:if test="${usuarioSession != null }">
-					<div class="dropdown">
-						<a href="#" class="dropbtn">${usuarioSession.getNomCli()}</a>
-						<div class="dropdown-content">
-							<a href="newPerfilCliente.jsp">Mi Perfil</a>
-							 <a href="PasajeServlet?operacion=listarPasajeCliente">Mis reservas</a> 
-							 <a href="ClienteServlet?operacion=salir">Salir</a>
-						</div>
-					</div>
-				</c:if>
-				<c:if test="${ usuarioSession == null }">
-					<a href="newLogin.jsp">Acceso</a>
-				</c:if>
+				<a href="newLogin.jsp">Acceso</a>
 			</nav>
 		</div>
 	</header>
@@ -53,15 +41,57 @@
 
 		<section id="cuerpo-titulo">
 			<div class="contenedor">
-				<h2>${param.msjTitulo}</h2>
-				<br>
-				<h3>${param.msjNombre}</h3>
-				<br>
-				<h3>${param.msjPrimeraLinea}</h3>
-				<h3>${param.msjSegundaLinea}</h3>
-				<br>
-				<a href="newIndex.jsp"><input class="boton_personalizado" type="button" value="Regresar a la página principal"></a>
+				<h2>Actualizar su pasaje</h2>
+
+				<div class="cuerpo-formulario">
+					<form action="">
+					
+					<input type="hidden" value="registrarCliente" name="operacion">
+					<input type="hidden" value='<libreria:generarCodigoCliente/>' name="txtCodigoCliente">
+					<input type="hidden" value=${param.codigoViaje} name="txtCodigoViaje">
+					
+						<table>
+							<tr>
+								<td colspan="6"><span>Datos del pasaje</span>
+									<hr>
+								</td>
+							</tr>
+							<tr>
+								<td><label for="">Origen: </label></td>
+								<td><input type="text" value=${param.origen} name="txtOrigen" readonly="readonly"></td>
+								<td><label for="">Destino: </label></td>
+								<td><input type="text" value=${param.destino} name="txtDestino" readonly="readonly"></td>
+								<td><label for="">Fecha de viaje: </label></td>
+								<td><input type="text" value=${param.fechaDestino} name="dtFechaViaje" readonly="readonly"></td>
+							</tr>
+							<tr>
+								<td><label for="">Nro. asiento: </label></td>
+								<td><select name="cboAsiento" id=""><option value="1">1</option><option value="">2</option></select></td>
+								<td><label for="">Precio: </label></td>
+								<td><input type="text" name="txtPrecio" onkeypress="return soloDecimales(event)" required="required" placeholder="50.00"></td>
+							</tr>
+							<tr>
+								<td><br></td>
+							</tr>
+							
+							<tr>
+								<td><br></td>
+							</tr>
+							<tr>
+								<td colspan="6"  style="text-align: center;"><input type="submit" class="btn" value="Grabar" onclick=this.form.action="ClienteServlet">
+								<a href="newReservaViajesCliente.jsp"><input type="button" value="Salir" class="btn"></a>
+								</td>
+							</tr>
+
+						</table>
+					</form>
+				</div>
+
 			</div>
+
+
+
+
 		</section>
 
 		<section id="cuerpo-informacion">

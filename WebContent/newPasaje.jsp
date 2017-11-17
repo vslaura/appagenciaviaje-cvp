@@ -4,6 +4,8 @@
 <%@ taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib uri="../WEB-INF/libreria.tld" prefix="libreria"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -33,7 +35,19 @@
 			<nav class="menu">
 				<a href="newIndex.jsp">Inicio</a>
 				<a href="#">Quienes somos</a>
-				<a href="newLogin.jsp">Acceso</a>
+				<c:if test="${usuarioSession != null }">
+					<div class="dropdown">
+						<a href="#" class="dropbtn">${usuarioSession.getNomCli()}</a>
+						<div class="dropdown-content">
+							<a href="newPerfilCliente.jsp">Mi Perfil</a>
+							 <a href="PasajeServlet?operacion=listarPasajeCliente">Mis reservas</a> 
+							 <a href="ClienteServlet?operacion=salir">Salir</a>
+						</div>
+					</div>
+				</c:if>
+				<c:if test="${ usuarioSession == null }">
+					<a href="newLogin.jsp">Acceso</a>
+				</c:if>
 			</nav>
 		</div>
 	</header>
@@ -47,7 +61,7 @@
 					<form action="">
 					
 					<input type="hidden" value="registrarCliente" name="operacion">
-					<input type="hidden" value='<libreria:generarCodigoCliente/>' name="txtCodigoCliente">
+					<input type="hidden" value="${usuarioSession.getCodCli()}" name="txtCodigoCliente">
 					<input type="hidden" value=${param.codigoViaje} name="txtCodigoViaje">
 					
 						<table>
@@ -67,8 +81,8 @@
 							<tr>
 								<td><label for="">Nro. asiento: </label></td>
 								<td><select name="cboAsiento" id=""><option value="1">1</option><option value="">2</option></select></td>
-								<td><label for="">Precio: </label></td>
-								<td><input type="text" name="txtPrecio" onkeypress="return soloDecimales(event)" required="required" placeholder="50.00"></td>
+								<td><label for="">Precio (S/.): </label></td>
+								<td><input type="text" name="txtPrecio" onkeypress="return soloDecimales(event)" required="required" placeholder="50.00" value="45.00"></td>
 							</tr>
 							<tr>
 								<td><br></td>
@@ -80,17 +94,17 @@
 							</tr>
 							<tr>
 								<td><label for="">DNI:</label></td>
-								<td><input type="text" name="txtDNI" onkeypress="return soloNumeros(event)" required="required" placeholder="23456789" maxlength="8" minlength="8"></td>
+								<td><input type="text" name="txtDNI" onkeypress="return soloNumeros(event)" required="required" placeholder="23456789" maxlength="8" minlength="8" value="${usuarioSession.getDniCli()}"></td>
 								<td><label for="">Nombres:</label></td>
-								<td><input type="text" name="txtNombres" onkeypress="return soloLetras(event)" required="required" placeholder="Laura" maxlength="30" minlength="8"></td>
+								<td><input type="text" name="txtNombres" onkeypress="return soloLetras(event)" required="required" placeholder="Laura" maxlength="30" minlength="8" value="${usuarioSession.getNomCli()}"></td>
 								<td><label for="">Apellidos:</label></td>
-								<td><input type="text" name="txtApellidos" onkeypress="return soloLetras(event)" required="required" placeholder="Valdivia Sánchez" minlength="8"></td>
+								<td><input type="text" name="txtApellidos" onkeypress="return soloLetras(event)" required="required" placeholder="Valdivia Sánchez" minlength="8" value="${usuarioSession.getApeCli()}"></td>
 							</tr>
 							<tr>
 								<td><label for="">E-mail:</label></td>
-								<td><input type="email" name="txtEmail" required="required" placeholder="miCorreo@gmail.com" maxlength="50"></td>
+								<td><input type="email" name="txtEmail" required="required" placeholder="miCorreo@gmail.com" maxlength="50" value="${usuarioSession.getEmailCli()}"></td>
 								<td><label for="">Usuario:</label></td>
-								<td><input type="text" name="txtUsuario" required="required" placeholder="laura456" maxlength="20" minlength="4"></td>
+								<td><input type="text" name="txtUsuario" required="required" placeholder="laura456" maxlength="20" minlength="4" value="${usuarioSession.getUsuarioCli()}"></td>
 								<td><label for="">Clave:</label></td>
 								<td><input type="password" name="txtClave" required="required" placeholder="miClave" maxlength="20" minlength="4"></td>
 							</tr>
