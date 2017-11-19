@@ -1,4 +1,5 @@
 
+
 use bd_appagenciaviajes;
 
 insert into tb_agencia values ('AG001', 'CIVA', 'Habilitado');
