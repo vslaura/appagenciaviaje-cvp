@@ -87,7 +87,7 @@
 				<display:column title="Precio" property="precPje"></display:column>
 				<display:column title="Fec. Compra" property="fechComPje"></display:column>
 				<display:column title="Cliente" property="codClie"></display:column>
-		
+			    <display:column title="Seleccionar" property="seleccionarPasajeWrapper"></display:column>
 
 			</display:table>
 
