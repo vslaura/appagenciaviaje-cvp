@@ -4,6 +4,8 @@
 <%@ taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib uri="../WEB-INF/libreria.tld" prefix="libreria"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -31,9 +33,20 @@
 		<div class="contenedor">
 			<h1>Agencia de viajes C.V.P</h1>
 			<nav class="menu">
-				<a href="newIndex.jsp">Inicio</a>
-				<a href="#">Quienes somos</a>
-				<a href="newLogin.jsp">Acceso</a>
+				<a href="newIndex.jsp">Inicio</a> <a href="#">Quienes somos</a>
+				<c:if test="${usuarioSession != null }">
+					<div class="dropdown">
+						<a href="#" class="dropbtn">${usuarioSession.getNomCli()}</a>
+						<div class="dropdown-content">
+							<a href="newPerfilCliente.jsp">Mi Perfil</a>
+							 <a href="PasajeServlet?operacion=listarPasajeCliente">Mis reservas</a> 
+							 <a href="ClienteServlet?operacion=salir">Salir</a>
+						</div>
+					</div>
+				</c:if>
+				<c:if test="${ usuarioSession == null }">
+					<a href="newLogin.jsp">Acceso</a>
+				</c:if>
 			</nav>
 		</div>
 	</header>

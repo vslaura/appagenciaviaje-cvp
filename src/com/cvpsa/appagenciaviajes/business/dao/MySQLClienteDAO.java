@@ -14,7 +14,7 @@ import com.cvpsa.appagenciaviajes.business.utils.MySQLConexion;
 
 public class MySQLClienteDAO implements ClienteDAO {
 
-	DataBase dataBase = new DataBase();
+	//DataBase dataBase = new DataBase();
 	
 	@Override
 	public int registrarCliente(ClienteDTO clienteDTO) {
@@ -36,7 +36,7 @@ public class MySQLClienteDAO implements ClienteDAO {
 			pst.setString(6, clienteDTO.getUsuarioCli());
 			pst.setString(7, clienteDTO.getClaveCli());
 			
-			dataBase.almacenarInsercion("cliente", pst.toString(), "cliente.txt");
+			//dataBase.almacenarInsercion("cliente", pst.toString(), "cliente.txt");
 			
 			rs = pst.executeUpdate();
 

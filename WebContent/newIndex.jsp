@@ -32,21 +32,21 @@
 		<div class="contenedor">
 			<h1>Agencia de viaje C.V.P</h1>
 			<nav class="menu">
-				<a href="#">Inicio</a> <a href="#">Quienes somos</a>
+				<a href="newIndex.jsp">Inicio</a>
+				<a href="#">Quienes somos</a>
 				<c:if test="${usuarioSession != null }">
 					<div class="dropdown">
 						<a href="#" class="dropbtn">${usuarioSession.getNomCli()}</a>
 						<div class="dropdown-content">
 							<a href="newPerfilCliente.jsp">Mi Perfil</a>
-							<a href="">Mis reservas</a>
-							<a href="">Salir</a>
+							 <a href="PasajeServlet?operacion=listarPasajeCliente">Mis reservas</a> 
+							 <a href="ClienteServlet?operacion=salir">Salir</a>
 						</div>
 					</div>
 				</c:if>
 				<c:if test="${ usuarioSession == null }">
 					<a href="newLogin.jsp">Acceso</a>
 				</c:if>
-
 
 			</nav>
 		</div>
@@ -170,7 +170,8 @@
 	<footer class="contenedor">
 		<p class="copy">Agencia de viajes C.V.P &copy; 2017</p>
 		<div class="sociales">
-			<a class="icon-facebook-squared" href="#"></a> <a
+			<a class="icon-facebook-squared" 
+			href="#"></a> <a
 				class="icon-twitter-squared" href="#"></a> <a
 				class="icon-gmail-squared" href="#"></a>
 		</div>

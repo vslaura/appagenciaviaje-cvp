@@ -69,7 +69,24 @@ public class MySQLPasajeDAO implements PasajeDAO {
 
 	@Override
 	public int actualizarPasaje(PasajeDTO pasajeDTO) {
-		// TODO Auto-generated method stub
+		
+//		Connection con = null;
+//		PreparedStatement pst = null;
+//		int rs = 0;t
+//		try {
+//			
+//			con = MySQLConexion.getConexion(); 
+//
+//			String sql = "update tb_cliente  set nom_cli =?, apell_cli =?,email_cli =?,usu_cli =?,cla_cli =? where cod_cli =?";
+//			pst = con.prepareStatement(sql);
+//			
+//			
+//			pst.setString(1, pasajeDTO.getNroAsientoPje());
+//			pst.setString(2, pasajeDTO.getFechComPje());
+//			pst.setString(3, pasajeDTO.getEmailCli());
+//			pst.setString(4, pasajeDTO.getUsuarioCli());
+//			pst.setString(5, pasajeDTO.getClaveCli());
+//			pst.setString(6, pasajeDTO.getCodCli());
 		return 0;
 	}
 

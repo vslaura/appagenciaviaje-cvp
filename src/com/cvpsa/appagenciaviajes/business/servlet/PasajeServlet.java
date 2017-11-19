@@ -1,11 +1,18 @@
 package com.cvpsa.appagenciaviajes.business.servlet;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.cvpsa.appagenciaviajes.business.bean.ClienteDTO;
+import com.cvpsa.appagenciaviajes.business.bean.PasajeDTO;
+import com.cvpsa.appagenciaviajes.business.services.PasajeService;
 
 /**
  * Servlet implementation class PasajeServlet
@@ -40,11 +47,11 @@ public class PasajeServlet extends HttpServlet {
 
 	private void procesarPasaje(HttpServletRequest request, HttpServletResponse response) {
 		
-		String operacion = request.getParameter("");
+		String operacion = request.getParameter("operacion");
 		
 		switch (operacion) {
-		case "":
-			
+		case "listarPasajeCliente":
+			listarReservaCliente(request,response);
 			break;
 
 		default:
@@ -52,5 +59,29 @@ public class PasajeServlet extends HttpServlet {
 		}
 		
 	}
+
+	private void listarReservaCliente(HttpServletRequest request, HttpServletResponse response) {
+		
+		HttpSession httpSession = request.getSession();
+		ClienteDTO cliente = (ClienteDTO) httpSession.getAttribute("usuarioSession");
+		
+		PasajeService pasajeService = new PasajeService();
+		List<PasajeDTO> listarPasajeCliente = pasajeService.listarPasajeCliente(cliente.getCodCli());
+		
+		httpSession.setAttribute("listaReservas", listarPasajeCliente);
+		
+		try {
+			request.getRequestDispatcher("newReservaViajesCliente.jsp").forward(request, response);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 
 }

@@ -3,7 +3,6 @@
 
 <%@ taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib uri="../WEB-INF/libreria.tld" prefix="libreria"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -14,15 +13,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
 
-	<link rel="shortcut icon" href="imagenes/viajes.ico" />
-
+	<link rel="shortcut icon" href="imagenes/viajes.ico" />	
+	
 	<link rel="stylesheet" href="css/newStyle.css" />
 	<link rel="stylesheet" href="css/newHeader.css" />
 	<link rel="stylesheet" href="css/newMenu.css">
-	<link rel="stylesheet" href="css/newPerfilCliente.css">
+	<link rel="stylesheet" href="css/newBodyPasaje.css">
 	<link rel="stylesheet" href="css/newInformacion.css">
 	<link rel="stylesheet" href="css/newFooter.css" />
-
+	
 	<script type="text/javascript" src="js/ValidacionCampos.js"></script>
 
 </head>
@@ -48,7 +47,6 @@
 				<c:if test="${ usuarioSession == null }">
 					<a href="newLogin.jsp">Acceso</a>
 				</c:if>
-
 			</nav>
 		</div>
 	</header>
@@ -56,47 +54,45 @@
 
 		<section id="cuerpo-titulo">
 			<div class="contenedor">
-				<h2>Actualizar </h2>
+				<h2>Actualizar su pasaje</h2>
 
 				<div class="cuerpo-formulario">
 					<form action="">
-
-						<input type="hidden" value="modificarCliente" name="operacion">
-						<input type="hidden" value="${usuarioSession.getCodCli()}" name="txtCodigoCliente">
-
+					
+					<input type="hidden" value="registrarCliente" name="operacion">
+					<input type="hidden" value='<libreria:generarCodigoCliente/>' name="txtCodigoCliente">
+					<input type="hidden" value=${param.codigoViaje} name="txtCodigoViaje">
+					
 						<table>
-
 							<tr>
-
-								<td colspan="4"><span>Mis datos</span>
-									<hr> </td>
+								<td colspan="6"><span>Datos del pasaje</span>
+									<hr>
+								</td>
 							</tr>
 							<tr>
-								<td><label for="">DNI:</label></td>																									
-								<td><input type="text" name="txtDNI" value="${usuarioSession.getDniCli()}" readonly="readonly"></td>
-								<td><label for="">Nombres:</label></td>
-								<td><input type="text" name="txtNombres" onkeypress="return soloLetras(event)" required="required" placeholder="Laura" maxlength="30" value= "${usuarioSession.getNomCli()}"></td>
+								<td><label for="">Origen: </label></td>
+								<td><input type="text" value=${param.origen} name="txtOrigen" readonly="readonly"></td>
+								<td><label for="">Destino: </label></td>
+								<td><input type="text" value=${param.destino} name="txtDestino" readonly="readonly"></td>
+								<td><label for="">Fecha de viaje: </label></td>
+								<td><input type="text" value=${param.fechaDestino} name="dtFechaViaje" readonly="readonly"></td>
 							</tr>
 							<tr>
-								<td><label for="">Apellidos:</label></td>
-								<td><input type="text" name="txtApellidos" onkeypress="return soloLetras(event)" required="required" placeholder="Valdivia Sánchez" value= "${usuarioSession.getApeCli()}"></td>
-
-								<td><label for="">E-mail:</label></td>
-								<td><input type="email" name="txtEmail" required="required" placeholder="miCorreo@gmail.com" maxlength="50" value= "${usuarioSession.getEmailCli()}" ></td>
-							</tr>
-							<tr>
-								<td><label for="">Usuario:</label></td>
-
-								<td><input type="text" name="txtUsuario" required="required" placeholder="laura456" maxlength="20" minlength="4"  value= "${usuarioSession.getUsuarioCli()}" ></td>
-								<td><label for="">Clave:</label></td>
-								<td><input type="password" name="txtClave" required="required" placeholder="miClave" maxlength="20" minlength="4" value= "${usuarioSession.getClaveCli()}" ></td>
+								<td><label for="">Nro. asiento: </label></td>
+								<td><select name="cboAsiento" id=""><option value="1">1</option><option value="">2</option></select></td>
+								<td><label for="">Precio: </label></td>
+								<td><input type="text" name="txtPrecio" onkeypress="return soloDecimales(event)" required="required" placeholder="50.00"></td>
 							</tr>
 							<tr>
 								<td><br></td>
 							</tr>
+							
 							<tr>
-								<td colspan="4" style="text-align: center;"><input type="submit" class="btn" value="Grabar" onclick=this.form.action="ClienteServlet">
-									<a href="newIndex.jsp"><input type="button" value="Salir" class="btn"></a>
+								<td><br></td>
+							</tr>
+							<tr>
+								<td colspan="6"  style="text-align: center;"><input type="submit" class="btn" value="Grabar" onclick=this.form.action="ClienteServlet">
+								<a href="newReservaViajesCliente.jsp"><input type="button" value="Salir" class="btn"></a>
 								</td>
 							</tr>
 

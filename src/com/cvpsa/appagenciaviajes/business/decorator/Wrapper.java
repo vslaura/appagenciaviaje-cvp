@@ -78,4 +78,17 @@ public class Wrapper extends TableDecorator{
 		return "<a href='newPasaje.jsp?origen=" + origen +"&&destino=" + destino +"&&fechaDestino=" + fechaDestino + "&&codigoViaje=" + codigoViaje +"'>Seleccionar</a>";
 	}
 	
+	
+	public String getSeleccionarPasajeWrapper ( ) {
+		
+		ViajeDTO viajeDTO = (ViajeDTO) getCurrentRowObject();
+		DepartamentoService departamentoService = new DepartamentoService();
+		String origen = departamentoService.obtenerDescripcionDepartamento(viajeDTO.getCodDepOrigen());
+		String destino = departamentoService.obtenerDescripcionDepartamento(viajeDTO.getCodDepDestino());
+		String fechaDestino = viajeDTO.getFecPartiVje();
+		String codigoViaje = viajeDTO.getCodVje();
+
+		return "<a href='newActualizarPasaje.jsp?origen=" + origen +"&&destino=" + destino +"&&fechaDestino=" + fechaDestino + "&&codigoViaje=" + codigoViaje +"'>Seleccionar</a>";
+	}
+	
 }

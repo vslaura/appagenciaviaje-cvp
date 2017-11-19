@@ -39,9 +39,9 @@
 					<div class="dropdown">
 						<a href="#" class="dropbtn">${usuarioSession.getNomCli()}</a>
 						<div class="dropdown-content">
-							<a href="html_newPerfilCliente.html">Mi Perfil</a> <a href="">Mis
-								reservas</a> <a href=""><input type="hidden" value="Salir"
-								name="operacion"></a>
+							<a href="newPerfilCliente.jsp">Mi Perfil</a>
+							 <a href="PasajeServlet?operacion=listarPasajeCliente">Mis reservas</a> 
+							 <a href="ClienteServlet?operacion=salir">Salir</a>
 						</div>
 					</div>
 				</c:if>
