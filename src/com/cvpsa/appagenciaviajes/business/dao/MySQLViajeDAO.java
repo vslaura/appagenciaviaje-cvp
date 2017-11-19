@@ -22,7 +22,7 @@ public class MySQLViajeDAO implements ViajeDAO {
 
 		try {
 			con = MySQLConexion.getConexion();
-			String sql = "insert into tb_viaje values (?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into tb_viaje values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			pst = con.prepareStatement(sql);
 			pst.setString(1, viajeDTO.getCodVje());
@@ -33,6 +33,9 @@ public class MySQLViajeDAO implements ViajeDAO {
 			pst.setString(6, viajeDTO.getCodDepOrigen());
 			pst.setString(7, viajeDTO.getCodDepDestino());
 			pst.setString(8, viajeDTO.getCodigoAgencia());
+			pst.setInt(9, viajeDTO.getCantidadAsientos());
+			pst.setDouble(10, viajeDTO.getPrecioViaje());
+
 
 			rs = pst.executeUpdate();
 
@@ -67,9 +70,9 @@ public class MySQLViajeDAO implements ViajeDAO {
 
 			rs = pst.executeQuery();
 
-			while (rs.next()) {
+				while (rs.next()) {
 				listaViajes.add(new ViajeDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10)));
 			}
 
 		} catch (Exception e) {
@@ -106,8 +109,9 @@ public class MySQLViajeDAO implements ViajeDAO {
 
 			rs = pst.executeQuery();
 
+		
 			while (rs.next()) {
-				viajeDTO = new ViajeDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8));
+				viajeDTO = new ViajeDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10));
 			}
 			
 		} catch (Exception e) {
@@ -145,10 +149,10 @@ public class MySQLViajeDAO implements ViajeDAO {
 			pst.setString(3, fecha);
 
 			rs = pst.executeQuery();
-
+	
 			while (rs.next()) {
 				listaViajes.add(new ViajeDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10)));
 			}
 
 		} catch (Exception e) {

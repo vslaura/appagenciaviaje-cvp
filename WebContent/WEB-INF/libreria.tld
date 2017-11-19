@@ -69,7 +69,14 @@
 		<info>Generar el codigo del departamento</info>
 	</tag>
 
-
+	<tag>
+		<name>listarAsientosNoReservados</name>
+		<tagclass>com.cvpsa.appagenciaviajes.business.etiquetas.AsientoReservadoTag
+		</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>lista los asientos</info>
+	</tag>
+	
 	<!-- <tag> -->
 	<!-- <name>fechaactual</name> -->
 	<!-- <tagclass>etiquetas.FechaActualTag</tagclass> -->

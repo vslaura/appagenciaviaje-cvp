@@ -19,7 +19,7 @@ public class PasajeServiceTest {
 	@Test
 	public void registrarPasaje ( ) {
 		
-		PasajeDTO pasajeDTO = new PasajeDTO(pasajeService.generarCodigoPasaje(), 8, 90.00, "2017/10/10", "C0001", "V0001");
+		PasajeDTO pasajeDTO = new PasajeDTO(pasajeService.generarCodigoPasaje(), 8, "2017/10/10", "", "V0001", "Si");
 		int resultado = pasajeService.registrarPasaje(pasajeDTO);
 		assertTrue(resultado == 1);
 	}
@@ -31,6 +31,21 @@ public class PasajeServiceTest {
 		for (PasajeDTO pasajeDTO : pasajeService.listarPasajeCliente("C0001") ) {
 			System.out.println( pasajeDTO.getCodPje() );
 			
+		}
+	}
+	@Test
+	public void listaPasajesReservados ( ) {
+		
+		for (PasajeDTO pasajeDTO : pasajeService.listaPasajeReservados( "V0031")) {
+			System.out.println ( pasajeDTO.getCodPje() + " " + pasajeDTO.getNroAsientoPje() + " " + pasajeDTO.getDisponible() );
+		}
+	}
+
+	@Test
+	public void listaPasajesNoReservados ( ) {
+		
+		for (PasajeDTO pasajeDTO : pasajeService.listaPasajesNoReservados("V0031")) {
+			System.out.println ( pasajeDTO.getCodPje() + " " + pasajeDTO.getNroAsientoPje() + " " + pasajeDTO.getDisponible() );
 		}
 	}
 

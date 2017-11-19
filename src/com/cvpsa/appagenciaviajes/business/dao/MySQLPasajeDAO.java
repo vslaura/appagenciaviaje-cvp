@@ -22,15 +22,14 @@ public class MySQLPasajeDAO implements PasajeDAO {
 
 		try {
 			con = MySQLConexion.getConexion();
-			String sql = "insert into tb_pasaje values (?, ?, ?, ?, ?, ?);";
+				String sql = "insert into tb_pasaje values (?, ?, ?, ?, ?, ?, 'No');";
 
 			pst = con.prepareStatement(sql);
 			pst.setString(1, pasajeDTO.getCodPje());
 			pst.setInt(2, pasajeDTO.getNroAsientoPje());
-			pst.setDouble(3, pasajeDTO.getPrecPje());
-			pst.setString(4, pasajeDTO.getFechComPje());
-			pst.setString(5, pasajeDTO.getCodClie());
-			pst.setString(6, pasajeDTO.getCodVje());
+			pst.setString(3, pasajeDTO.getFechComPje());
+			pst.setString(4, pasajeDTO.getCodClie());
+			pst.setString(5, pasajeDTO.getCodVje());
 
 			rs = pst.executeUpdate();
 
@@ -147,9 +146,10 @@ public class MySQLPasajeDAO implements PasajeDAO {
 
 			rs = pst.executeQuery();
 
+		
 			while (rs.next()) {
-				listaPasajes.add(new PasajeDTO(rs.getString(1), rs.getInt(2), rs.getDouble(3), rs.getString(4),
-						rs.getString(5), rs.getString(6)));
+				listaPasajes.add(new PasajeDTO(rs.getString(1), rs.getInt(2), rs.getString(3),
+						rs.getString(4), rs.getString(5), rs.getString(6)));
 
 			}
 
@@ -169,4 +169,123 @@ public class MySQLPasajeDAO implements PasajeDAO {
 		return listaPasajes;
 	}
 
+	@Override
+	public List<PasajeDTO> listaPasajesReservados ( String codigoViaje ) {
+		
+		List<PasajeDTO> listaPasajes = new ArrayList<PasajeDTO>();
+		
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			con = MySQLConexion.getConexion();			
+			String sql = "select * from tb_pasaje where reservado = 'Si' and cod_vje = ?;";
+			
+			pst = con.prepareStatement(sql);
+			
+			pst.setString(1, codigoViaje );
+			
+			rs = pst.executeQuery();
+			
+			while ( rs.next() ) {
+				
+				listaPasajes.add(new PasajeDTO(rs.getString(1), rs.getInt(2), rs.getString(3),
+						rs.getString(4), rs.getString(5), rs.getString(6)));
+				
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Error en la sentencia listar pasajes reservados: " + e);
+		} finally {
+			try {
+				if (pst != null)
+					pst.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				System.out.println("Error al cerrar ");
+			}
+		}
+		return listaPasajes;
+	}
+
+	@Override
+	public List<PasajeDTO> listaPasajesNoReservados( String codigoViaje ) {
+
+		List<PasajeDTO> listaPasajes = new ArrayList<PasajeDTO>();
+		
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			con = MySQLConexion.getConexion();			
+			String sql = "select * from tb_pasaje where reservado = 'No' and cod_vje = ?;";
+			
+			pst = con.prepareStatement(sql);
+			pst.setString(1, codigoViaje);
+			
+			rs = pst.executeQuery();
+			
+			while ( rs.next() ) {
+				
+				listaPasajes.add(new PasajeDTO(rs.getString(1), rs.getInt(2), rs.getString(3),
+						rs.getString(4), rs.getString(5), rs.getString(6)));
+				
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Error en la sentencia listar pasajes no reservados: " + e);
+		} finally {
+			try {
+				if (pst != null)
+					pst.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				System.out.println("Error al cerrar ");
+			}
+		}
+		return listaPasajes;
+	}
+
+	@Override
+	public int adquirirPasajeCliente( String codigoCliente, String codigoPasaje ) {
+		
+		Connection con = null;
+		PreparedStatement pst = null;
+		int rs = 0;
+		
+		try {
+			
+			con = MySQLConexion.getConexion();
+			String sql = "update tb_pasaje set cod_cli = ?, reservado = 'Si' where cod_psje = ?;";
+			
+			pst = con.prepareStatement(sql);
+			
+			pst.setString(1, codigoCliente);
+			pst.setString(2, codigoPasaje);
+			
+			rs = pst.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("Error en la sentencia obtener pasaje: " + e);
+		} finally {
+			try {
+				if (pst != null)
+					pst.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				System.out.println("Error al cerrar ");
+			}
+		}
+		return rs;
+	}
+
 }
+ 
+

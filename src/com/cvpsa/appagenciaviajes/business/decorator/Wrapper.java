@@ -75,7 +75,7 @@ public class Wrapper extends TableDecorator{
 		String fechaDestino = viajeDTO.getFecPartiVje();
 		String codigoViaje = viajeDTO.getCodVje();
 
-		return "<a href='newPasaje.jsp?origen=" + origen +"&&destino=" + destino +"&&fechaDestino=" + fechaDestino + "&&codigoViaje=" + codigoViaje +"'>Seleccionar</a>";
+		return "<a href='PasajeServlet?operacion=redireccionar&&origen=" + origen +"&&destino=" + destino +"&&fechaDestino=" + fechaDestino + "&&codigoViaje=" + codigoViaje +"'>Seleccionar</a>";
 	}
 	
 	

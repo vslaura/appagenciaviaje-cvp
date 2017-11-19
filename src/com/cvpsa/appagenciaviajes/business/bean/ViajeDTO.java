@@ -10,10 +10,11 @@ public class ViajeDTO {
 	private String codDepOrigen;
 	private String codDepDestino;
 	private String codigoAgencia;
+	private int cantidadAsientos;
+	private double precioViaje;
 
 	public ViajeDTO(String codVje, String codEmp, String codBus, String fecPartiVje, String fecLlgarVje,
-			String codDepOrigen, String codDepDestino, String codigoAgencia) {
-		super();
+			String codDepOrigen, String codDepDestino, String codigoAgencia, int cantidadASientos, double precioViaje) {
 		this.codVje = codVje;
 		this.codEmp = codEmp;
 		this.codBus = codBus;
@@ -21,7 +22,9 @@ public class ViajeDTO {
 		this.fecLlgarVje = fecLlgarVje;
 		this.codDepOrigen = codDepOrigen;
 		this.codDepDestino = codDepDestino;
-		this.codigoAgencia  = codigoAgencia;
+		this.codigoAgencia = codigoAgencia;
+		this.cantidadAsientos = cantidadASientos;
+		this.precioViaje = precioViaje;
 	}
 
 	public String getCodVje() {
@@ -86,6 +89,22 @@ public class ViajeDTO {
 
 	public void setCodigoAgencia(String codigoAgencia) {
 		this.codigoAgencia = codigoAgencia;
+	}
+
+	public int getCantidadAsientos() {
+		return cantidadAsientos;
+	}
+
+	public void setCantidadAsientos(int cantidadAsientos) {
+		this.cantidadAsientos = cantidadAsientos;
+	}
+
+	public double getPrecioViaje() {
+		return precioViaje;
+	}
+
+	public void setPrecioViaje(double precioViaje) {
+		this.precioViaje = precioViaje;
 	}
 
 }

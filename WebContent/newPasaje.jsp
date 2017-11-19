@@ -73,13 +73,16 @@
 						<tr>
 							<td><label for="">Origen: </label></td>
 							<td><input type="text" value=${param.origen
-								} name="txtOrigen" readonly="readonly"></td>
+								}
+								name="txtOrigen" readonly="readonly"></td>
 							<td><label for="">Destino: </label></td>
 							<td><input type="text" value=${param.destino
-								} name="txtDestino" readonly="readonly"></td>
+								}
+								name="txtDestino" readonly="readonly"></td>
 							<td><label for="">Fecha de viaje: </label></td>
 							<td><input type="text" value=${param.fechaDestino
-								} name="dtFechaViaje" readonly="readonly"></td>
+								}
+								name="dtFechaViaje" readonly="readonly"></td>
 						</tr>
 						<tr>
 							<td><label for="">Nro. asiento: </label></td>

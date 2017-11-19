@@ -20,56 +20,83 @@ import com.cvpsa.appagenciaviajes.business.services.PasajeService;
 @WebServlet("/PasajeServlet")
 public class PasajeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public PasajeServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	public static String codigoViaje = "";
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		procesarPasaje ( request, response );
+	public PasajeServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		procesarPasaje ( request, response );
+		procesarPasaje(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		procesarPasaje(request, response);
 	}
 
 	private void procesarPasaje(HttpServletRequest request, HttpServletResponse response) {
-		
+
 		String operacion = request.getParameter("operacion");
-		
+
 		switch (operacion) {
+		case "redireccionar":
+
+			HttpSession session = request.getSession();
+			session.setAttribute("codigoViajeSession", request.getParameter("codigoViaje"));
+
+			String origen = request.getParameter("origen");
+			String destino = request.getParameter("destino");
+			String fechaDestino = request.getParameter("fechaDestino");
+			String codigoViaje = request.getParameter("codigoViaje");
+
+			PasajeServlet.codigoViaje = codigoViaje;
+
+			try {
+				request.getRequestDispatcher("/newPasaje.jsp?origen=" + origen + "&&destino=" + destino
+						+ "&&fechaDestino=" + fechaDestino + "&&codigoViaje=" + codigoViaje).forward(request, response);
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		case "listarPasajeCliente":
-			listarReservaCliente(request,response);
+			listarReservaCliente(request, response);
 			break;
 
 		default:
 			break;
 		}
-		
+
 	}
 
 	private void listarReservaCliente(HttpServletRequest request, HttpServletResponse response) {
-		
+
 		HttpSession httpSession = request.getSession();
 		ClienteDTO cliente = (ClienteDTO) httpSession.getAttribute("usuarioSession");
-		
+
 		PasajeService pasajeService = new PasajeService();
 		List<PasajeDTO> listarPasajeCliente = pasajeService.listarPasajeCliente(cliente.getCodCli());
-		
+
 		httpSession.setAttribute("listaReservas", listarPasajeCliente);
-		
+
 		try {
 			request.getRequestDispatcher("newReservaViajesCliente.jsp").forward(request, response);
 		} catch (ServletException e) {
@@ -79,9 +106,7 @@ public class PasajeServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	
 
 }

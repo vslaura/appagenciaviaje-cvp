@@ -23,4 +23,15 @@ public class PasajeService {
 		return getPasajeDAO.listaPasajesCliente(codigoCliente);
 	}
 	
+	public List<PasajeDTO> listaPasajeReservados ( String codigoViaje ) {
+		return getPasajeDAO.listaPasajesReservados( codigoViaje );
+	}
+	
+	public List<PasajeDTO> listaPasajesNoReservados ( String codigoViaje) {
+		return getPasajeDAO.listaPasajesNoReservados( codigoViaje );
+	}
+	
+	public int adquirirPasaje ( String codigoCliente, String codigoPasaje ) {
+		return getPasajeDAO.adquirirPasajeCliente(codigoCliente, codigoPasaje);
+	}
 }
