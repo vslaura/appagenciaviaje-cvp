@@ -72,12 +72,65 @@ public class ClienteServlet extends HttpServlet {
 		case "iniciarSesion":
 			iniciarSesion(request, response);
 			break;
+		case "recuperarPassword":
+			recuperarPassword(request,response);
+			break;
 		case "salir":
 			salir(request, response);
 			break;
 		default:
 			break;
 		}
+	}
+
+	private void recuperarPassword(HttpServletRequest request, HttpServletResponse response) {
+		
+		String correo = request.getParameter("txtCorreo");
+		
+		ClienteService clienteService = new ClienteService();
+		ClienteDTO clienteDTO = clienteService.buscarClienteCorreo(correo);
+	
+		
+		
+		if(clienteDTO != null){
+			Mail mail = new Mail();
+			mail.SendMail(correo, "Recordatorio de password - Agencia de Viajes CVP S.A" , "\n" +clienteDTO.getNomCli()+""+clienteDTO.getApeCli());
+			
+			try {
+				String msjTitulo = "Su contraseña fue enviada con éxito";
+				String msjNombre = "Estimado(a) " + clienteDTO.getNomCli()+ ":";
+				String msjPrimeraLinea = "Sea enviado a su correo su contraseña";
+				String msjSegundaLinea = "Por favor verifique en su bandeja de entrada,y vuelva a  iniciar la sesión.";
+				request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre=" + msjNombre
+						+ "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea=" + msjSegundaLinea)
+						.forward(request, response);
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+
+		} else {
+			try {
+				String msjTitulo = "Correo Incorrecto";
+				String msjNombre = "Estimado(a) " + clienteDTO.getNomCli()+ ":";
+				String msjPrimeraLinea = "El correo Ingresado es Incorreo " ;
+				String msjSegundaLinea = "Si desea recuperar su contraeña, por favor vuelva a intentarlo";
+				request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre=" + msjNombre
+						+ "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea=" + msjSegundaLinea)
+						.forward(request, response);
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+		
 	}
 
 	/**

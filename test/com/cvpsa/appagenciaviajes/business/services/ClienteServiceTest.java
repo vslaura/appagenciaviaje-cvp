@@ -70,4 +70,6 @@ public class ClienteServiceTest {
 		System.out.println(clienteService.buscarClienteCorreo("juan@gmil.com").getNomCli());
 	}
 	
+	
+	
 }
