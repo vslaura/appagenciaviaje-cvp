@@ -58,7 +58,7 @@
 		<div class="contenedor-slider" id="contenedor-slider">
 			<div class="slider" id="slider">
 				<section class="slider__section">
-					<img class="slider__img" src="imagenes/index/banner.jpg" />
+					<img class="slider__img" src="imagenes/index/viaja.png" />
 				</section>
 				<section class="slider__section">
 					<img class="slider__img" src="imagenes/index/banner.jpg" />
@@ -113,7 +113,7 @@
 				<h4>Comentario</h4>
 			</article>
 			<article>
-				<img src="imagenes/index/img1.jpg" />
+				<img src="imagenes/index/imgs1.jpg" />
 				<h4>Comentario</h4>
 			</article>
 			<article>

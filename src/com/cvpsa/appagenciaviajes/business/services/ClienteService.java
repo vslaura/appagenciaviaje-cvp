@@ -32,4 +32,11 @@ public class ClienteService {
 	public int actualizarUsuario(ClienteDTO clienteDTO) {
 		return getClienteDAO.actualizarCliente( clienteDTO);
 	}
+	
+	public ClienteDTO buscarClienteDni (String dni){
+		return getClienteDAO.buscarClienteDni(dni);
+	}
+	public ClienteDTO buscarClienteCorreo (String correo){
+		return getClienteDAO.buscarClienteCorreo(correo);
+	}
 }

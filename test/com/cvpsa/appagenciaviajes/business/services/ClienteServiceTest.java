@@ -59,4 +59,15 @@ public class ClienteServiceTest {
 		int resultado = clienteService.actualizarUsuario(clienteDTO);
 		assertTrue(resultado == 1);
 	}
+	
+	@Test
+	public void buscarClienteDni_test() {
+		System.out.println(clienteService.buscarClienteDni("89787600").getNomCli());
+	}
+	
+	@Test
+	public void buscarClienteCorreo_test() {
+		System.out.println(clienteService.buscarClienteCorreo("juan@gmil.com").getNomCli());
+	}
+	
 }
