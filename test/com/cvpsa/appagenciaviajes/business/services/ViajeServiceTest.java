@@ -27,15 +27,14 @@ public class ViajeServiceTest {
 	@Test
 	public void registrarViaje_test() {
 
+		// Al inciar la insercion
 //		for (int i = 1; i < 10; i++) {
 //			
 //			ViajeDTO viajeDTO = new ViajeDTO("V000" + i, "EA001", "B000" + i, "2017/12/0" + i, "2017/12/1" + i, "DEP01", "DEP02",
 //					"AG00" + i, 35 + i, 65.00 + ( i * 10 ));
 			
-//		for (int i = 0; i <= 10; i++) {
-//			ViajeDTO viajeDTO = new ViajeDTO("V001" + i, "EA001", "B001" + i, "2017/12/0" + i, "2017/12/1" + i, "DEP01", "DEP03",
-//			( i == 10 ) ? "AG0" + (i + 1) : "AG00" + i, 35 + i, 65.00 + ( i * 10 ));
 			
+		// A partir de 10...
 		for (int i = 0; i < 10; i++) {
 			ViajeDTO viajeDTO = new ViajeDTO("V001" + i, "EA001", "B001" + i, "2017/12/01", "2017/12/10", "DEP01", "DEP03",
 			( i == 0 ) ? "AG010" : "AG00" + i, 35 + i, 65.00 + ( i * 10 ));
