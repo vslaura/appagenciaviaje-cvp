@@ -74,8 +74,9 @@ public class Wrapper extends TableDecorator{
 		String destino = departamentoService.obtenerDescripcionDepartamento(viajeDTO.getCodDepDestino());
 		String fechaDestino = viajeDTO.getFecPartiVje();
 		String codigoViaje = viajeDTO.getCodVje();
+		Double precioViaje = viajeDTO.getPrecioViaje();
 
-		return "<a href='PasajeServlet?operacion=redireccionar&&origen=" + origen +"&&destino=" + destino +"&&fechaDestino=" + fechaDestino + "&&codigoViaje=" + codigoViaje +"'>Seleccionar</a>";
+		return "<a href='PasajeServlet?operacion=redireccionar&&origen=" + origen +"&&destino=" + destino +"&&fechaDestino=" + fechaDestino + "&&codigoViaje=" + codigoViaje +"&&precioViaje=" + precioViaje +"'>Seleccionar</a>";
 	}
 	
 	

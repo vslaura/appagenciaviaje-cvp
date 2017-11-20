@@ -62,12 +62,13 @@ public class PasajeServlet extends HttpServlet {
 			String destino = request.getParameter("destino");
 			String fechaDestino = request.getParameter("fechaDestino");
 			String codigoViaje = request.getParameter("codigoViaje");
+			Double precioViaje = Double.parseDouble(request.getParameter("precioViaje"));
 
 			PasajeServlet.codigoViaje = codigoViaje;
 
 			try {
 				request.getRequestDispatcher("/newPasaje.jsp?origen=" + origen + "&&destino=" + destino
-						+ "&&fechaDestino=" + fechaDestino + "&&codigoViaje=" + codigoViaje).forward(request, response);
+						+ "&&fechaDestino=" + fechaDestino + "&&codigoViaje=" + codigoViaje +"&&precioViaje=" + precioViaje).forward(request, response);
 			} catch (ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

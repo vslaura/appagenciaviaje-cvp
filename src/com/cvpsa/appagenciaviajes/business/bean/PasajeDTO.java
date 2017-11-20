@@ -7,16 +7,18 @@ public class PasajeDTO {
 	private String codPje;
 	private int nroAsientoPje;
 	private String fechComPje;
+	private String horaComPsje;
 	private String codClie;
 	private String codVje;
 	private String disponible;
 
-	public PasajeDTO(String codPje, int nroAsientoPje, String fechComPje, String codClie, String codVje,
+	public PasajeDTO(String codPje, int nroAsientoPje, String fechComPje, String horaComPsje, String codClie, String codVje,
 			String disponible) {
 		super();
 		this.codPje = codPje;
 		this.nroAsientoPje = nroAsientoPje;
 		this.fechComPje = fechComPje;
+		this.horaComPsje = horaComPsje;
 		this.codClie = codClie;
 		this.codVje = codVje;
 		this.disponible = disponible;
@@ -68,6 +70,14 @@ public class PasajeDTO {
 
 	public void setDisponible(String disponible) {
 		this.disponible = disponible;
+	}
+
+	public String getHoraComPsje() {
+		return horaComPsje;
+	}
+
+	public void setHoraComPsje(String horaComPsje) {
+		this.horaComPsje = horaComPsje;
 	}
 
 }

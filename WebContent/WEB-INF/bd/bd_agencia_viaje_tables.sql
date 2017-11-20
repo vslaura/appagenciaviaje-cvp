@@ -83,7 +83,7 @@ create table tb_viaje(
     cod_dep_destino char(5) not null,
     codigoAgencia varchar(8) not null,
 	cantidadAsientos int not null,
-	precioViaje decimal null
+	precioViaje double null
 );
 
 
@@ -128,6 +128,7 @@ create table tb_pasaje (
 	cod_psje char(5) not null,
     nro_asiento int null,
     fech_comp_psje date null,
+	hora_psje time null,
     cod_cli char(5) null,
     cod_vje char(5) not null,
 	reservado varchar(30) null

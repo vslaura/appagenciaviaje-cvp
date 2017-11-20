@@ -31,7 +31,7 @@ public class PasajeService {
 		return getPasajeDAO.listaPasajesNoReservados( codigoViaje );
 	}
 	
-	public int adquirirPasaje ( String codigoCliente, String codigoPasaje ) {
-		return getPasajeDAO.adquirirPasajeCliente(codigoCliente, codigoPasaje);
+	public int adquirirPasaje ( String codigoCliente, String fechaReserva, String horaReserva, String codigoPasaje ) {
+		return getPasajeDAO.adquirirPasajeCliente(codigoCliente, fechaReserva, horaReserva, codigoPasaje);
 	}
 }

@@ -19,7 +19,7 @@ public class PasajeServiceTest {
 	@Test
 	public void MyregistrarPasaje ( ) {
 		
-		PasajeDTO pasajeDTO = new PasajeDTO(pasajeService.generarCodigoPasaje(), 8, "2017/10/10", "", "V0001", "Si");
+		PasajeDTO pasajeDTO = new PasajeDTO(pasajeService.generarCodigoPasaje(), 8, "", "", "","V0001", "Si");
 		int resultado = pasajeService.registrarPasaje(pasajeDTO);
 		assertTrue(resultado == 1);
 	}

@@ -20,6 +20,6 @@ public interface PasajeDAO {
 	public List<PasajeDTO> listaPasajesReservados ( String codigoViaje );
 	public List<PasajeDTO> listaPasajesNoReservados ( String codigoViaje );
 	
-	public int adquirirPasajeCliente ( String codigoCliente, String codigoPasaje );
+	public int adquirirPasajeCliente ( String codigoCliente, String fechaReserva, String horaReserva, String codigoPasaje );
 	
 }

@@ -45,7 +45,7 @@ public class ViajeServiceTest {
 			PasajeService pasajeService = new PasajeService();
 
 			for (int j = 1; j <= viajeDTO.getCantidadAsientos(); j++) {
-				pasajeService.registrarPasaje(new PasajeDTO(pasajeService.generarCodigoPasaje(), j, "", "",
+				pasajeService.registrarPasaje(new PasajeDTO(pasajeService.generarCodigoPasaje(), j, "", "", "",
 						viajeDTO.getCodVje(), "Si"));
 			} 
 		}

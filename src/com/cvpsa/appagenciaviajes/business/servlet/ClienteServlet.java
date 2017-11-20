@@ -155,9 +155,18 @@ public class ClienteServlet extends HttpServlet {
 
 		String codigoPasaje = request.getParameter("cboAsiento");
 
+		Date date = new Date();
+		
+		SimpleDateFormat sdfFecha = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdfHora = new SimpleDateFormat("hh:mm:ss");
+		
+		String fechaReserva = sdfFecha.format(date).toString();
+		String horaReserva = sdfHora.format(date);
+		
+		
 		PasajeService pasajeService = new PasajeService();
 
-		int resultadoAdquirirPasaje = pasajeService.adquirirPasaje(codCli, codigoPasaje);
+		int resultadoAdquirirPasaje = pasajeService.adquirirPasaje(codCli, fechaReserva, horaReserva, codigoPasaje);
 
 		if (resultadoAdquirirPasaje != 0) {
 

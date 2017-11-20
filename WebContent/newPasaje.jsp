@@ -90,7 +90,7 @@
 							<td><label for="">Precio (S/.): </label></td>
 							<td><input type="text" name="txtPrecio"
 								onkeypress="return soloDecimales(event)" required="required"
-								placeholder="50.00" value="45.00"></td>
+								placeholder="50.00" value="${param.precioViaje}" readonly="readonly"></td>
 						</tr>
 						<tr>
 							<td><br></td>

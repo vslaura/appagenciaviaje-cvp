@@ -82,13 +82,12 @@
 
 			</div>
 			<display:table name="${listaReservas}">
+			
+				<display:column title="Codigo Viaje" property="codVje"></display:column>
 				<display:column title="Codigo Reserva" property="codPje"></display:column>
 				<display:column title="Nro Asiento" property="nroAsientoPje"></display:column>
-				<display:column title="Precio" property="precPje"></display:column>
 				<display:column title="Fec. Compra" property="fechComPje"></display:column>
-				<display:column title="Cliente" property="codClie"></display:column>
-			    <display:column title="Seleccionar" property="seleccionarPasajeWrapper"></display:column>
-
+			    
 			</display:table>
 
 		</section>
