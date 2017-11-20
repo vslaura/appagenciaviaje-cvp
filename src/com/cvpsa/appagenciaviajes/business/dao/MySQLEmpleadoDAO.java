@@ -9,10 +9,13 @@ import java.util.List;
 
 import com.cvpsa.appagenciaviajes.business.bean.EmpleadoDTO;
 import com.cvpsa.appagenciaviajes.business.interfaces.EmpleadoDAO;
+import com.cvpsa.appagenciaviajes.business.utils.DataBase;
 import com.cvpsa.appagenciaviajes.business.utils.MySQLConexion;
 
 public class MySQLEmpleadoDAO implements EmpleadoDAO {
 
+//	DataBase dataBase = new DataBase();
+	
 	@Override
 	public int registrarEmpleado(EmpleadoDTO empleadoDTO) {
 
@@ -31,6 +34,8 @@ public class MySQLEmpleadoDAO implements EmpleadoDAO {
 			pst.setString(4, empleadoDTO.getApellEmp());
 			pst.setInt(5, empleadoDTO.getCategoria());
 
+//			dataBase.almacenarInsercion("empleado", pst.toString(), "empleado.txt");
+			
 			rs = pst.executeUpdate();
 
 		} catch (Exception ex) {

@@ -27,32 +27,50 @@ public class ViajeServiceTest {
 	@Test
 	public void registrarViaje_test() {
 
-			ViajeDTO viajeDTO = new ViajeDTO("V0031", "EA001", "B0001", "2017/11/30", "2017/12/30", "DEP01", "DEP02", "AG001", 25, 65.00);
-//		ViajeDTO viajeDTO = new ViajeDTO("V0003", "EF003", "B0003", null, null, null, null);
+//		for (int i = 1; i < 10; i++) {
+//			
+//			ViajeDTO viajeDTO = new ViajeDTO("V000" + i, "EA001", "B000" + i, "2017/12/0" + i, "2017/12/1" + i, "DEP01", "DEP02",
+//					"AG00" + i, 35 + i, 65.00 + ( i * 10 ));
+			
+//		for (int i = 0; i <= 10; i++) {
+//			ViajeDTO viajeDTO = new ViajeDTO("V001" + i, "EA001", "B001" + i, "2017/12/0" + i, "2017/12/1" + i, "DEP01", "DEP03",
+//			( i == 10 ) ? "AG0" + (i + 1) : "AG00" + i, 35 + i, 65.00 + ( i * 10 ));
+			
+		for (int i = 0; i < 10; i++) {
+			ViajeDTO viajeDTO = new ViajeDTO("V001" + i, "EA001", "B001" + i, "2017/12/01", "2017/12/10", "DEP01", "DEP03",
+			( i == 0 ) ? "AG010" : "AG00" + i, 35 + i, 65.00 + ( i * 10 ));
+			
+			viajeService.registrarViaje(viajeDTO);
+			
+			PasajeService pasajeService = new PasajeService();
 
-		PasajeService pasajeService = new PasajeService();
+			for (int j = 1; j <= viajeDTO.getCantidadAsientos(); j++) {
+				pasajeService.registrarPasaje(new PasajeDTO(pasajeService.generarCodigoPasaje(), j, "", "",
+						viajeDTO.getCodVje(), "Si"));
+			} 
+		}
 		
-		for (int i = 1; i <= viajeDTO.getCantidadAsientos(); i++) {
-			pasajeService.registrarPasaje(new PasajeDTO(pasajeService.generarCodigoPasaje(), i, "2017/12/30", "", viajeDTO.getCodVje(), "Si"));
-		}								//new PasajeDTO(pasajeService.generarCodigoPasaje(), 8, 90.00, "2017/10/10", "", "V0001", "Si");
-		
-		
-		int resultado = viajeService.registrarViaje(viajeDTO);
-		assertTrue(resultado == 1);
 	}
 
 	@Test
 	public void listarViajesPorOrigenDestinoFecha() {
 
 		for (ViajeDTO viajeDTO : viajeService.listarViajesPorOrigenDestinoFecha("DEP01", "DEP02", "2017/11/30")) {
-			System.out.println(viajeDTO.getCodDepOrigen() + " " + viajeDTO.getCodDepDestino() + " " + viajeDTO.getFecPartiVje());
+			System.out.println(
+					viajeDTO.getCodDepOrigen() + " " + viajeDTO.getCodDepDestino() + " " + viajeDTO.getFecPartiVje());
 		}
 	}
 
 	@Test
-	public void buscarViaje () {
-		
+	public void buscarViaje() {
+
 		ViajeDTO viajeDTO = viajeService.buscarViaje("V0001");
 		System.out.println(viajeDTO.getCodVje());
 	}
+	
+	@Test
+	public void codigoAutogenerado ( ) {
+		System.out.println( viajeService.codigoAutogenerado());
+	}
+	
 }

@@ -53,12 +53,10 @@ public class PasajeServlet extends HttpServlet {
 	private void procesarPasaje(HttpServletRequest request, HttpServletResponse response) {
 
 		String operacion = request.getParameter("operacion");
-
+		
 		switch (operacion) {
-		case "redireccionar":
 
-			HttpSession session = request.getSession();
-			session.setAttribute("codigoViajeSession", request.getParameter("codigoViaje"));
+		case "redireccionar":
 
 			String origen = request.getParameter("origen");
 			String destino = request.getParameter("destino");
@@ -77,6 +75,7 @@ public class PasajeServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			break;
 		case "listarPasajeCliente":
 			listarReservaCliente(request, response);
 			break;

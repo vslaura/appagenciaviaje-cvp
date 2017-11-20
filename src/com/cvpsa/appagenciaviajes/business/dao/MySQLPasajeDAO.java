@@ -9,10 +9,13 @@ import java.util.List;
 
 import com.cvpsa.appagenciaviajes.business.bean.PasajeDTO;
 import com.cvpsa.appagenciaviajes.business.interfaces.PasajeDAO;
+import com.cvpsa.appagenciaviajes.business.utils.DataBase;
 import com.cvpsa.appagenciaviajes.business.utils.MySQLConexion;
 
 public class MySQLPasajeDAO implements PasajeDAO {
 
+//	DataBase dataBase = new DataBase();
+	
 	@Override
 	public int registrarPasaje(PasajeDTO pasajeDTO) {
 
@@ -22,15 +25,16 @@ public class MySQLPasajeDAO implements PasajeDAO {
 
 		try {
 			con = MySQLConexion.getConexion();
-				String sql = "insert into tb_pasaje values (?, ?, ?, ?, ?, ?, 'No');";
+				String sql = "insert into tb_pasaje values (?, ?, null, ?, ?, 'No');";
 
 			pst = con.prepareStatement(sql);
 			pst.setString(1, pasajeDTO.getCodPje());
 			pst.setInt(2, pasajeDTO.getNroAsientoPje());
-			pst.setString(3, pasajeDTO.getFechComPje());
-			pst.setString(4, pasajeDTO.getCodClie());
-			pst.setString(5, pasajeDTO.getCodVje());
+			pst.setString(3, pasajeDTO.getCodClie());
+			pst.setString(4, pasajeDTO.getCodVje());
 
+//			dataBase.almacenarInsercion("pasaje", pst.toString(), "pasaje.txt");
+			
 			rs = pst.executeUpdate();
 
 		} catch (Exception ex) {

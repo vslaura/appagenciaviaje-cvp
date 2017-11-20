@@ -8,11 +8,12 @@ import org.junit.Test;
 
 import com.cvpsa.appagenciaviajes.business.bean.EmpleadoDTO;
 import com.cvpsa.appagenciaviajes.business.services.EmpleadoService;
+import com.github.javafaker.Faker;
 
 public class EmpleadoServiceTest {
 
 	EmpleadoService empleadoService = new EmpleadoService();
-	
+	Faker faker = new Faker();
 	
 	@Test
 	public void listarEmpleados_test() {
@@ -26,10 +27,13 @@ public class EmpleadoServiceTest {
 	
 	@Test
 	public void registrarEmpleado_test(){
-		EmpleadoDTO empleadoDTO = new EmpleadoDTO(empleadoService.obtenerCodigoAutogenerado(),"90877654", "Luis", "Martines Peres", 2);
 		
-		int resultado = empleadoService.registrarEmpleados(empleadoDTO);
-		assertTrue(resultado == 1);
+		for (int i = 0; i < 18; i++) {
+			EmpleadoDTO empleadoDTO = new EmpleadoDTO(empleadoService.obtenerCodigoAutogenerado(), faker.code().ean8(), faker.name().firstName(), faker.name().lastName() + " " + faker.name().lastName(), 2);
+			System.out.println(empleadoDTO.getNomEmp() + " " + empleadoDTO.getApellEmp());
+			empleadoService.registrarEmpleados(empleadoDTO);
+		}
+		
 	}
 	
 	@Test

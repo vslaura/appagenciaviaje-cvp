@@ -9,10 +9,13 @@ import java.util.List;
 
 import com.cvpsa.appagenciaviajes.business.bean.ViajeDTO;
 import com.cvpsa.appagenciaviajes.business.interfaces.ViajeDAO;
+import com.cvpsa.appagenciaviajes.business.utils.DataBase;
 import com.cvpsa.appagenciaviajes.business.utils.MySQLConexion;
 
 public class MySQLViajeDAO implements ViajeDAO {
 
+//	DataBase dataBase = new DataBase();
+	
 	@Override
 	public int registrarViaje(ViajeDTO viajeDTO) {
 
@@ -36,6 +39,7 @@ public class MySQLViajeDAO implements ViajeDAO {
 			pst.setInt(9, viajeDTO.getCantidadAsientos());
 			pst.setDouble(10, viajeDTO.getPrecioViaje());
 
+//			dataBase.almacenarInsercion("viaje", pst.toString(), "viaje.txt");
 
 			rs = pst.executeUpdate();
 
@@ -168,6 +172,43 @@ public class MySQLViajeDAO implements ViajeDAO {
 			}
 		}
 		return listaViajes;
+	}
+
+	@Override
+	public String obtenerCodigoAutogenerado() {
+
+		String codigoViaje = "V0001";
+
+		Connection con = null;
+		PreparedStatement pst = null;
+		ResultSet rs = null;
+		try {
+
+			con = MySQLConexion.getConexion();
+
+			String sql = "select max(cod_vje) FROM tb_viaje";
+			pst = con.prepareStatement(sql);
+
+			rs = pst.executeQuery();
+
+			if (rs.next()) {
+				codigoViaje = "V" + String.format("%04d", (Integer.parseInt(rs.getString(1).substring(1)) + 1));
+			}
+
+		} catch (Exception e) {
+			System.out.println("Error en la sentencia generar codigo de viaje: " + e);
+		} finally {
+			try {
+				if (pst != null)
+					pst.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				System.out.println("Error al cerrar ");
+			}
+		}
+
+		return codigoViaje;
 	}
 
 }

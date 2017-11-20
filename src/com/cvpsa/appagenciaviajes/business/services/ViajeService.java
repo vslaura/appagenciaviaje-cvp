@@ -27,4 +27,9 @@ public class ViajeService {
 	public ViajeDTO buscarViaje ( String codVje ){
 		return getViajeDAO.buscarViaje(codVje);
 	}
+	
+	public String codigoAutogenerado ( ) { 
+		return getViajeDAO.obtenerCodigoAutogenerado();
+	}
+	
 }

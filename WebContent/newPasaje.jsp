@@ -86,9 +86,7 @@
 						</tr>
 						<tr>
 							<td><label for="">Nro. asiento: </label></td>
-							<td><select name="cboAsiento" id=""><option
-										value="1">1</option>
-									<option value="2">2</option></select></td>
+							<td><select name="cboAsiento"><libreria:listarAsientosNoReservados /></select></td>
 							<td><label for="">Precio (S/.): </label></td>
 							<td><input type="text" name="txtPrecio"
 								onkeypress="return soloDecimales(event)" required="required"

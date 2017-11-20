@@ -14,6 +14,6 @@ public interface ViajeDAO {
 	
 	public List<ViajeDTO> listarViajesPorOrigenDestinoFecha (String codigoOrigen, String codigoDestino, String fecha);
 
-	
+	public String obtenerCodigoAutogenerado();
 	
 }

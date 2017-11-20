@@ -8,12 +8,34 @@ insert into tb_agencia values ('AG003', 'Libertadores', 'Habilitado');
 insert into tb_agencia values ('AG004', 'Mega Bus', 'Habilitado');
 insert into tb_agencia values ('AG005', 'Red Bus', 'Habilitado');
 insert into tb_agencia values ('AG006', 'Antezana', 'Habilitado');
+insert into tb_agencia values ('AG007', 'Cruz del Sur', 'Habilitado');
+insert into tb_agencia values ('AG008', 'Flores', 'Habilitado');
+insert into tb_agencia values ('AG009', 'Exclusiva', 'Habilitado');
+insert into tb_agencia values ('AG010', 'Tepsa', 'Habilitado');
+insert into tb_agencia values ('AG011', 'Tepsa', 'Habilitado');
 
 insert into tb_categoria values(1,'Administrador');
 insert into tb_categoria values(2,'Chofer');
 
-insert into tb_empleado values('EA001','28788976','Juan','Valdes Martinez',1);
-insert into tb_empleado values('EC002','28788976','Ricardo','Perez Romero',1);
+insert into tb_empleado values ('EA001','28788976','Juan','Valdes Martinez',1);
+insert into tb_empleado values ('EC002','28788976','Ricardo','Perez Romero',1);
+insert into tb_empleado values ('EC004', '84118523', 'Juana', 'Hoppe McClure', 2);
+insert into tb_empleado values ('EC005', '87079401', 'Coralie', 'Lesch Rogahn', 2);
+insert into tb_empleado values ('EC006', '70674170', 'Jessy', 'Towne Gerhold', 2);
+insert into tb_empleado values ('EC007', '54178717', 'Dolores', 'Terry Schulist', 2);
+insert into tb_empleado values ('EC008', '41994474', 'Payton', 'Stamm Harris', 2);
+insert into tb_empleado values ('EC009', '31461955', 'Enoch', 'Davis Dickens', 2);
+insert into tb_empleado values ('EC010', '28711490', 'Neva', 'Aufderhar Ortiz', 2);
+insert into tb_empleado values ('EC011', '36179855', 'Darby', 'Schimmel Maggio', 2);
+insert into tb_empleado values ('EC012', '39835284', 'Lacey', 'Reynolds Muller', 2);
+insert into tb_empleado values ('EC013', '14158872', 'Enid', 'McClure Wilkinson', 2);
+insert into tb_empleado values ('EC014', '73340836', 'Greta', 'Stamm Waelchi', 2);
+insert into tb_empleado values ('EC015', '63303155', 'Rigoberto', 'Macejkovic Upton', 2);
+insert into tb_empleado values ('EC016', '92059030', 'Eugene', 'Smith Skiles', 2);
+insert into tb_empleado values ('EC017', '65648551', 'Ethelyn', 'Leannon Rogahn', 2);
+insert into tb_empleado values ('EC018', '28936084', 'Providenci', 'Corkery Hauck', 2);
+insert into tb_empleado values ('EC019', '68236960', 'Esmeralda', 'Berge Parker', 2);
+insert into tb_empleado values ('EC020', '04266860', 'Catalina', 'Lehner Anderson', 2);
 
 insert into tb_estado_bus values ('EB000', 'Seleccionar todo', 'Habilitado');
 insert into tb_estado_bus values ('EB001', 'En servicio', 'Habilitado');
@@ -21,58 +43,53 @@ insert into tb_estado_bus values ('EB002', 'Fuera de servicio', 'Habilitado');
 insert into tb_estado_bus values ('EB003', 'En Mantenmiento', 'Habilitado');
 
 insert into tb_bus values('B0001','VSM242','Negro','HYundai',30, 'EB001');
-insert into tb_bus values('B0002','MCV299','Blanco','HYundai',30, 'EB002');
-insert into tb_bus values('B0003','MCV299','Blanco','HYundai',30, 'EB001');
-
-insert into tb_departamento values ('DEP01','Lima');
-insert into tb_departamento values ('DEP02','Ayacucho');
-insert into tb_departamento values ('DEP03','Cajamarca');
-insert into tb_departamento values ('DEP04','Piura');
-insert into tb_departamento values ('DEP05','Amazonas');
-insert into tb_departamento values ('DEP06','Cusco');
-insert into tb_departamento values ('DEP07','Arequipa');
-insert into tb_departamento values ('DEP08','Huancavelica');
-insert into tb_departamento values ('DEP09','Ica');
-insert into tb_departamento values ('DEP10','Puno');
-
-    
-insert into tb_viaje values('V0001','EA001','B0001','2017/11/30','2017/12/28','DEP01','DEP02', 'AG001', 30, 45.00);
-insert into tb_viaje values('V0002','EC002','B0002','2017/11/30','2017/12/28','DEP01','DEP02', 'AG002', 30, 45.00);
-insert into tb_viaje values('V0003','EA001','B0001','2017/11/30','2017/12/28','DEP01','DEP02', 'AG003', 30, 45.00);
-insert into tb_viaje values('V0004','EC002','B0002','2017/11/30','2017/12/28','DEP01','DEP02', 'AG004', 30, 45.00);
-insert into tb_viaje values('V0005','EC002','B0002','2017/11/03','2017/12/28','DEP01','DEP02', 'AG005', 30, 45.00);
-insert into tb_viaje values('V0006','EC002','B0002','2017/11/03','2017/12/28','DEP01','DEP02', 'AG006', 30, 45.00);
-
-insert into tb_viaje values('V0007','EC002','B0002','2017/11/02','2017/12/28','DEP01','DEP03', 'AG001', 30, 45.00);
-insert into tb_viaje values('V0008','EC002','B0002','2017/11/02','2017/12/28','DEP01','DEP03', 'AG002', 30, 45.00);
-insert into tb_viaje values('V0009','EC002','B0002','2017/11/02','2017/12/28','DEP01','DEP03', 'AG003', 30, 45.00);
-insert into tb_viaje values('V0010','EC002','B0002','2017/11/02','2017/12/28','DEP01','DEP03', 'AG004', 30, 45.00);
-insert into tb_viaje values('V0011','EC002','B0002','2017/11/02','2017/12/28','DEP01','DEP03', 'AG005', 30, 45.00);
-insert into tb_viaje values('V0012','EC002','B0002','2017/11/02','2017/12/28','DEP01','DEP03', 'AG006', 30, 60.00);
-
-insert into tb_viaje values('V0013','EC002','B0002','2017/11/03','2017/12/28','DEP01','DEP04', 'AG001', 30, 60.00);
-insert into tb_viaje values('V0014','EC002','B0002','2017/11/03','2017/12/28','DEP01','DEP04', 'AG002', 30, 60.00);
-insert into tb_viaje values('V0015','EC002','B0002','2017/11/03','2017/12/28','DEP01','DEP04', 'AG003', 30, 60.00);
-insert into tb_viaje values('V0016','EC002','B0002','2017/11/03','2017/12/28','DEP01','DEP04', 'AG004', 30, 60.00);
-insert into tb_viaje values('V0017','EC002','B0002','2017/11/03','2017/12/28','DEP01','DEP04', 'AG005', 30, 60.00);
-insert into tb_viaje values('V0018','EC002','B0002','2017/11/03','2017/12/28','DEP01','DEP04', 'AG006', 30, 60.00);
+insert into tb_bus values('B0002','MCV299','Blanco','HYundai',40, 'EB001');
+insert into tb_bus values('B0003','MCV299','Blanco','HYundai',35, 'EB001');
+insert into tb_bus values('B0004','BWT000','Negro','HYundai',50, 'EB001');
+insert into tb_bus values('B0005','DEF678','Blanco','HYundai',30, 'EB001');
+insert into tb_bus values('B0006','JUI897','Blanco','HYundai',40, 'EB001');
+insert into tb_bus values('B0007','KIJ789','Negro','HYundai',45, 'EB001');
+insert into tb_bus values('B0008','FRG534','Blanco','HYundai',50, 'EB001');
+insert into tb_bus values('B0009','MKI876','Blanco','HYundai',35, 'EB001');
+insert into tb_bus values('B0010','LOK897','Negro','HYundai',30, 'EB001');
+insert into tb_bus values('B0011','POL543','Blanco','HYundai',50, 'EB001');
+insert into tb_bus values('B0012','MVT465','Blanco','HYundai',40, 'EB001');
+insert into tb_bus values('B0013','BFG342','Negro','HYundai',45, 'EB001');
+insert into tb_bus values('B0014','YTU768','Blanco','HYundai',35, 'EB001');
+insert into tb_bus values('B0015','IWJ700','Blanco','HYundai',30, 'EB001');
+insert into tb_bus values('B0016','ITJ999','Negro','HYundai',50, 'EB002');
+insert into tb_bus values('B0017','IPC700','Blanco','HYundai',40, 'EB002');
+insert into tb_bus values('B0018','IPB701','Blanco','HYundai',35, 'EB002');
+insert into tb_bus values('B0019','IDH812','Negro','HYundai',30, 'EB003');
+insert into tb_bus values('B0029','IDF201','Blanco','HYundai',45, 'EB003');
+insert into tb_bus values('B0030','BAA000','Blanco','HYundai',30, 'EB003');
 
 
-insert into tb_viaje values('V0019','EC002','B0002','2017/11/04','2017/12/28','DEP01','DEP05', 'AG001', 30, 60.00);
-insert into tb_viaje values('V0020','EC002','B0002','2017/11/04','2017/12/28','DEP01','DEP05', 'AG002', 30, 60.00);
-insert into tb_viaje values('V0021','EC002','B0002','2017/11/04','2017/12/28','DEP01','DEP05', 'AG003', 30, 100.00);
-insert into tb_viaje values('V0022','EC002','B0002','2017/11/04','2017/12/28','DEP01','DEP05', 'AG004', 30, 100.00);
-insert into tb_viaje values('V0023','EC002','B0002','2017/11/04','2017/12/28','DEP01','DEP05', 'AG005', 30, 100.00);
-insert into tb_viaje values('V0024','EC002','B0002','2017/11/04','2017/12/28','DEP01','DEP05', 'AG006', 30, 100.00);
-
-insert into tb_viaje values('V0025','EC002','B0002','2017/11/05','2017/12/28','DEP01','DEP06', 'AG001', 30, 100.00);
-insert into tb_viaje values('V0026','EC002','B0002','2017/11/05','2017/12/28','DEP01','DEP06', 'AG002', 30, 100.00);
-insert into tb_viaje values('V0027','EC002','B0002','2017/11/05','2017/12/28','DEP01','DEP06', 'AG003', 30, 100.00);
-insert into tb_viaje values('V0028','EC002','B0002','2017/11/05','2017/12/28','DEP01','DEP06', 'AG004', 30, 100.00);
-insert into tb_viaje values('V0029','EC002','B0002','2017/11/05','2017/12/28','DEP01','DEP06', 'AG005', 30, 100.00);
-insert into tb_viaje values('V0030','EC002','B0002','2017/11/05','2017/12/28','DEP01','DEP06', 'AG006', 30, 100.00);
-
-
+insert into tb_departamento values ('DEP01','Amazonas');
+insert into tb_departamento values ('DEP02','Ancash');
+insert into tb_departamento values ('DEP03','Apurimac');
+insert into tb_departamento values ('DEP04','Arequipa');
+insert into tb_departamento values ('DEP05','Ayacucho');
+insert into tb_departamento values ('DEP06','Cajamarca');
+insert into tb_departamento values ('DEP07','Callao');
+insert into tb_departamento values ('DEP08','Cusco');
+insert into tb_departamento values ('DEP09','Huancavelica');
+insert into tb_departamento values ('DEP10','Huanuco');
+insert into tb_departamento values ('DEP11','Ica');
+insert into tb_departamento values ('DEP12','Junin');
+insert into tb_departamento values ('DEP13','La Libertad');
+insert into tb_departamento values ('DEP14','Lambayeque');
+insert into tb_departamento values ('DEP15','Lima');
+insert into tb_departamento values ('DEP16','Loreto');
+insert into tb_departamento values ('DEP17','Madre de Dios');
+insert into tb_departamento values ('DEP18','Moquegua');
+insert into tb_departamento values ('DEP19','Pasco');
+insert into tb_departamento values ('DEP20','Piura');
+insert into tb_departamento values ('DEP21','Puno');
+insert into tb_departamento values ('DEP22','San Martin');
+insert into tb_departamento values ('DEP23','Tacna');
+insert into tb_departamento values ('DEP24','Tumbes');
+insert into tb_departamento values ('DEP25','Ucayali');
 
 insert into tb_cliente values ('C0001','89787656','Pedro','Torres Fuentes','Pedro89@gmail.com', 'pedro300', 'miClave');
 insert into tb_cliente values ('C0002','89787658','Gian Carlos','Macedo Valdivia','GianMacedo@gmail.com', 'g456', 'miClave');
@@ -106,38 +123,3 @@ insert into tb_cliente values ('C0029', '26942162', 'Erwin', 'VeumKertzmann', 'C
 insert into tb_cliente values ('C0030', '05304752', 'Tiffany', 'BalistreriHarris', 'Tania@gmail.com', 'Josiah', 'Crona');
 insert into tb_cliente values ('C0031', '88680729', 'Ignatius', 'PurdyCorwin', 'Adan@gmail.com', 'Morgan', 'Towne');
 insert into tb_cliente values ('C0032', '52838699', 'Juana', 'MarksConroy', 'Arlo@gmail.com', 'Hobart', 'Fahey');
-
-
-insert into tb_pasaje values ('P0001',1,'2017/12/28','C0001','V0001', 'No');
-insert into tb_pasaje values ('P0002',30,'2017/12/28','C0001','V0002', 'Si');
-
-select * From tb_pasaje a inner join tb_cliente b on a.cod_cli = b.cod_cli;
-
-select * from tb_viaje;
-select * from tb_cliente;
-select * from tb_pasaje;
-select * from tb_pasaje;
-select * from tb_agencia;
-
-select * from tb_bus where mar_bus = 'HYundai';
-
-select nro_asiento
-from tb_pasaje where fech_comp_psje = '2017/12/28';
-
-select * from tb_bus where cod_est_bus = 'EB001';
-
-select * from tb_viaje where cod_dep_origen = 'DEP01' and cod_dep_destino = 'DEP02' and fec_par_vje = '2017/11/30';
-
-select desc_dep from tb_departamento where cod_dep = 'DEP01';
-
-select nombreAgencia from tb_agencia where codigoAgencia = 'AG001';
-
-
-select * from tb_pasaje;
-update tb_pasaje set cod_cli = 'C0001', reservado = 'Si' where cod_psje = 'P0001';
-
-select * from tb_pasaje where reservado = 'No' and cod_vje = 'V0031';
-
-
-select * from tb_viaje;
-select * from tb_departamento;

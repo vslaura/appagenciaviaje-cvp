@@ -17,7 +17,7 @@ public class PasajeServiceTest {
 	}
 	
 	@Test
-	public void registrarPasaje ( ) {
+	public void MyregistrarPasaje ( ) {
 		
 		PasajeDTO pasajeDTO = new PasajeDTO(pasajeService.generarCodigoPasaje(), 8, "2017/10/10", "", "V0001", "Si");
 		int resultado = pasajeService.registrarPasaje(pasajeDTO);
@@ -47,6 +47,11 @@ public class PasajeServiceTest {
 		for (PasajeDTO pasajeDTO : pasajeService.listaPasajesNoReservados("V0031")) {
 			System.out.println ( pasajeDTO.getCodPje() + " " + pasajeDTO.getNroAsientoPje() + " " + pasajeDTO.getDisponible() );
 		}
+	}
+	
+	@Test
+	public void codigoAutogenerado ( ) {
+		System.out.println( pasajeService.generarCodigoPasaje());
 	}
 
 }
