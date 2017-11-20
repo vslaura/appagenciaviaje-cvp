@@ -16,4 +16,6 @@ public interface ClienteDAO {
 	
 	public String obtenerCodigoAutogeneradoCliente();
 	
+	public ClienteDTO buscarClienteDni (String dni);
+	public ClienteDTO buscarClienteCorreo (String correo);
 }
