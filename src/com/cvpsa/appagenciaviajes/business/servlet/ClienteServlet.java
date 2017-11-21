@@ -90,17 +90,15 @@ public class ClienteServlet extends HttpServlet {
 		ClienteService clienteService = new ClienteService();
 		ClienteDTO clienteDTO = clienteService.buscarClienteCorreo(correo);
 	
-		
-		
 		if(clienteDTO != null){
 			Mail mail = new Mail();
-			mail.SendMail(correo, "Recordatorio de password - Agencia de Viajes CVP S.A" , "\n" +clienteDTO.getNomCli()+""+clienteDTO.getApeCli());
+			mail.SendMail(correo, "Recordatorio de password - Agencia de Viajes CVP S.A" , "\n" + "Estimado(a) " + clienteDTO.getNomCli() + ":" + "\nSu contraseña es: " + clienteDTO.getClaveCli());
 			
 			try {
-				String msjTitulo = "Su contraseña fue enviada con éxito";
+				String msjTitulo = "Contraseña fue enviada con éxito";
 				String msjNombre = "Estimado(a) " + clienteDTO.getNomCli()+ ":";
-				String msjPrimeraLinea = "Sea enviado a su correo su contraseña";
-				String msjSegundaLinea = "Por favor verifique en su bandeja de entrada,y vuelva a  iniciar la sesión.";
+				String msjPrimeraLinea = "Se ha enviado a su correo la contraseña";
+				String msjSegundaLinea = "Por favor verifique en su bandeja de entrada, y vuelva a  iniciar sesión.";
 				request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre=" + msjNombre
 						+ "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea=" + msjSegundaLinea)
 						.forward(request, response);
@@ -182,8 +180,6 @@ public class ClienteServlet extends HttpServlet {
 
 	private void registarCliente(HttpServletRequest request, HttpServletResponse response) {
 
-		
-		
 		String codCli = request.getParameter("txtCodigoCliente");
 		String dniCli = request.getParameter("txtDNI");
 		String nomCli = request.getParameter("txtNombres");
@@ -193,50 +189,37 @@ public class ClienteServlet extends HttpServlet {
 		String claveCli = request.getParameter("txtClave");
 
 		ClienteService clienteService = new ClienteService();
-		int resultadoRegistroCliente = 0;
 		
+		ClienteDTO comprabarDNI = clienteService.buscarClienteDni(dniCli);
+		ClienteDTO comprobarEmail = clienteService.buscarClienteCorreo(emailCli);
 		
-		if (codCli.equals("") || codCli == null) {
-			codCli = clienteService.obtenerCodigoAutogenerado();
-			ClienteDTO clienteDTO = new ClienteDTO(codCli, dniCli, nomCli, apeCli, emailCli, usuCli, claveCli);
-			resultadoRegistroCliente = clienteService.registrarEmpleados(clienteDTO);
+		if ( comprabarDNI != null ) {
 			
-			if ( resultadoRegistroCliente != 0 ) {
-				System.out.println( "Cliente registrado");
-			}
-		}
-
-		String codigoPasaje = request.getParameter("cboAsiento");
-
-		Date date = new Date();
-		
-		SimpleDateFormat sdfFecha = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat sdfHora = new SimpleDateFormat("hh:mm:ss");
-		
-		String fechaReserva = sdfFecha.format(date).toString();
-		String horaReserva = sdfHora.format(date);
-		
-		
-		PasajeService pasajeService = new PasajeService();
-
-		int resultadoAdquirirPasaje = pasajeService.adquirirPasaje(codCli, fechaReserva, horaReserva, codigoPasaje);
-
-		if (resultadoAdquirirPasaje != 0) {
-
-			System.out.println("Pasaje Registrado");
-			Mail mail = new Mail();
-			mail.SendMail(emailCli, "Agencia de Viajes CVP s.a", "\n" + nomCli + " " + apeCli + " - " + codCli
-					+ ".\n\nConfirmación de Reserva.\n Estimado(a):\nSe realizó la Operación Reserva de Pasaje\n su código de es el "
-					+ codigoPasaje + " por el monto de \nS/.45.00 - por orden de nuestro cliente " + nomCli
-					+ " " + apeCli + ". \n\nFecha y hora de la operación: " + "fechaCompra"
-					+ ". \n\nAtentamente, CVP s.a Agencia de Viajes.\n\n\n*************************** AVISO LEGAL  *************************\n\nEste mensaje es solamente para la persona a la que va dirigido.\n Puede contener información confidencial o legalmente protegida.\n No hay renunciaa la confidencialidad o privilegio por cualquier\n transmisión mala/errónea.Si usted ha recibido este mensaje \npor error,le rogamos que borre de susistema inmediatamente \nel mensaje asi como todas sus copias, destruya todasde \nsu disco duro y notifique al remitente. No debe,directa o \nindirectamenteusar, revelar, distribuir, imprimir o copiar\n ninguna de las partes de este mensaje si no es\n usted el destinatario. Cualquier opinión expresada en\n este mensaje proviene del remitente,excepto cuando el mensaje\n establezca locontrario y el remitente esta autorizado\n para establecer que dichas opiniones provienen\n de CVP s.a. Nótese que el correo electrónico viaInternet no\n permite asegurar ni la confidencialidad de los mensajes que \nse transmiten ni la correcta recepción de los mismos. En \nel caso de que eldestinatario de este mensaje no consintiera \nla utilización del correo electrónico via Internet,\nrogamos lo ponga en nuestro conocimiento de manera inmediata. ");
-
+			System.out.println( "DNI registrado ");
 			try {
-				String msjTitulo = "Su reserva se ha registrado con éxito.";
-				String msjNombre = "Estimado " + nomCli + ":";
-				String msjPrimeraLinea = "El código de su reserva es " + codigoPasaje
-						+ ". Se ha enviado un email al correo registrado. ";
-				String msjSegundaLinea = "Si desea realizar algún cambio en su reserva, por favor inicie sesión.";
+				String msjTitulo = "DNI registrado.";
+				String msjNombre = "Estimado(a) " + nomCli + ":";
+				String msjPrimeraLinea = "Su DNI ya se encuentra registrado, por favor seleccione la opción olvidó contraseña.";
+				String msjSegundaLinea = "";
+				request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre=" + msjNombre
+						+ "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea=" + msjSegundaLinea)
+						.forward(request, response);
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		} else if ( comprobarEmail != null ) {
+			
+			System.out.println( "Email registrado ");
+			try {
+				String msjTitulo = "E-mail registrado.";
+				String msjNombre = "Estimado(a) " + nomCli + ":";
+				String msjPrimeraLinea = "Su e-mail ya se encuentra registrado, por favor verifique su correo.";
+				String msjSegundaLinea = "";
 				request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre=" + msjNombre
 						+ "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea=" + msjSegundaLinea)
 						.forward(request, response);
@@ -248,8 +231,64 @@ public class ClienteServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		}
+		} else {
+			
+			int resultadoRegistroCliente = 0;
+			
+			if (codCli.equals("") || codCli == null) {
+				codCli = clienteService.obtenerCodigoAutogenerado();
+				ClienteDTO clienteDTO = new ClienteDTO(codCli, dniCli, nomCli, apeCli, emailCli, usuCli, claveCli);
+				resultadoRegistroCliente = clienteService.registrarEmpleados(clienteDTO);
+				
+				if ( resultadoRegistroCliente != 0 ) {
+					System.out.println( "Cliente registrado");
+				}
+			}
 
+			String codigoPasaje = request.getParameter("cboAsiento");
+
+			Date date = new Date();
+			
+			SimpleDateFormat sdfFecha = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat sdfHora = new SimpleDateFormat("hh:mm:ss");
+			
+			String fechaReserva = sdfFecha.format(date).toString();
+			String horaReserva = sdfHora.format(date);
+			
+			
+			PasajeService pasajeService = new PasajeService();
+
+			int resultadoAdquirirPasaje = pasajeService.adquirirPasaje(codCli, fechaReserva, horaReserva, codigoPasaje);
+
+			if (resultadoAdquirirPasaje != 0) {
+
+				System.out.println("Pasaje Registrado");
+				Mail mail = new Mail();
+				mail.SendMail(emailCli, "Agencia de Viajes CVP s.a", "\n" + nomCli + " " + apeCli + " - " + codCli
+						+ ".\n\nConfirmación de Reserva.\n Estimado(a):\nSe realizó la Operación Reserva de Pasaje\n su código de es el "
+						+ codigoPasaje + " por el monto de \nS/.45.00 - por orden de nuestro cliente " + nomCli
+						+ " " + apeCli + ". \n\nFecha y hora de la operación: " + fechaReserva + " " + horaReserva
+						+ ". \n\nAtentamente, CVP s.a Agencia de Viajes.\n\n\n*************************** AVISO LEGAL  *************************\n\nEste mensaje es solamente para la persona a la que va dirigido.\n Puede contener información confidencial o legalmente protegida.\n No hay renunciaa la confidencialidad o privilegio por cualquier\n transmisión mala/errónea.Si usted ha recibido este mensaje \npor error,le rogamos que borre de susistema inmediatamente \nel mensaje asi como todas sus copias, destruya todasde \nsu disco duro y notifique al remitente. No debe,directa o \nindirectamenteusar, revelar, distribuir, imprimir o copiar\n ninguna de las partes de este mensaje si no es\n usted el destinatario. Cualquier opinión expresada en\n este mensaje proviene del remitente,excepto cuando el mensaje\n establezca locontrario y el remitente esta autorizado\n para establecer que dichas opiniones provienen\n de CVP s.a. Nótese que el correo electrónico viaInternet no\n permite asegurar ni la confidencialidad de los mensajes que \nse transmiten ni la correcta recepción de los mismos. En \nel caso de que eldestinatario de este mensaje no consintiera \nla utilización del correo electrónico via Internet,\nrogamos lo ponga en nuestro conocimiento de manera inmediata. ");
+
+				try {
+					String msjTitulo = "Su reserva se ha registrado con éxito.";
+					String msjNombre = "Estimado " + nomCli + ":";
+					String msjPrimeraLinea = "El código de su reserva es " + codigoPasaje
+							+ ". Se ha enviado un email al correo registrado. ";
+					String msjSegundaLinea = "Si desea realizar algún cambio en su reserva, por favor inicie sesión.";
+					request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre=" + msjNombre
+							+ "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea=" + msjSegundaLinea)
+							.forward(request, response);
+				} catch (ServletException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}
+		}
 	}
 
 	private void listarClientes(HttpServletRequest request, HttpServletResponse response) {

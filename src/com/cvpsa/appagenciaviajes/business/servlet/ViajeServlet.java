@@ -76,6 +76,9 @@ public class ViajeServlet extends HttpServlet {
 		
 		String origen = "Origen: " + departamentoService.obtenerDescripcionDepartamento(codigoOrigen) + " ";
 		String destino = "Destino: " + departamentoService.obtenerDescripcionDepartamento(codigoDestino) + " ";
+		
+		
+		
 		String fec = "Fecha de viaje: " + fecha;
 		
 		HttpSession session = request.getSession();

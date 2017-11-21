@@ -87,6 +87,7 @@
 				<display:column title="Codigo Reserva" property="codPje"></display:column>
 				<display:column title="Nro Asiento" property="nroAsientoPje"></display:column>
 				<display:column title="Fec. Compra" property="fechComPje"></display:column>
+				<display:column title="Hora. Compra" property="horaComPsje"></display:column>
 			    
 			</display:table>
 

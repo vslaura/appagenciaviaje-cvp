@@ -266,13 +266,14 @@ public class MySQLPasajeDAO implements PasajeDAO {
 		try {
 			
 			con = MySQLConexion.getConexion();
-			String sql = "update tb_pasaje set cod_cli = ?, reservado = 'Si', fech_comp_psje = ? where cod_psje = ?;";
+			String sql = "update tb_pasaje set cod_cli = ?, reservado = 'Si', fech_comp_psje = ?, hora_psje = ? where cod_psje = ?;";
 			
 			pst = con.prepareStatement(sql);
 			
 			pst.setString(1, codigoCliente);
 			pst.setString(2, fechaReserva);
-			pst.setString(3, codigoPasaje);
+			pst.setString(3, horaReserva);
+			pst.setString(4, codigoPasaje);
 			
 			rs = pst.executeUpdate();
 			

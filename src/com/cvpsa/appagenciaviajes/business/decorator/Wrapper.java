@@ -82,6 +82,10 @@ public class Wrapper extends TableDecorator{
 	
 	public String getSeleccionarPasajeWrapper ( ) {
 		
+		// Validar la fecha del pasaje
+		// Si la fecha es menor a la actual, entonces hará el cambio
+		// Si no, debe indicar que no es posible realizarlo
+		
 		ViajeDTO viajeDTO = (ViajeDTO) getCurrentRowObject();
 		DepartamentoService departamentoService = new DepartamentoService();
 		String origen = departamentoService.obtenerDescripcionDepartamento(viajeDTO.getCodDepOrigen());

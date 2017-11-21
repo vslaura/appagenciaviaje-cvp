@@ -69,7 +69,7 @@
 								<td colspan="2"><input type="submit" value="Ingresar" class="btn" onclick=this.form.action="ClienteServlet"></td>
 							</tr>
 							<tr>
-								<td colspan="2"><a href="#"><label for="">Olvidó su contraseña</label></a></td>
+								<td colspan="2"><a href="newRecuperarPassword.jsp"><label for="">Olvidó su contraseña</label></a></td>
 							</tr>
 														<tr>
 								<td colspan="2"><a href="#"><label for="">${param.resultado}</label></a></td>
