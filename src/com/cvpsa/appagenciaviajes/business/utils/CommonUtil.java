@@ -18,16 +18,17 @@ public class CommonUtil {
 		
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("dd-MM-yyyy");
+		String fechaConvert = "";
 		
 		try {
 			Date date= simpleDateFormat.parse(fecha);
-			simpleDateFormat1.format(date).toString();
+			fechaConvert = simpleDateFormat1.format(date).toString();
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return fecha;
+		return fechaConvert;
 		
 	}
 	
