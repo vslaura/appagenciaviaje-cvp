@@ -75,7 +75,7 @@ public class MySQLPasajeDAO implements PasajeDAO {
 		
 //		Connection con = null;
 //		PreparedStatement pst = null;
-//		int rs = 0;t
+//		int rs = 0;
 //		try {
 //			
 //			con = MySQLConexion.getConexion(); 

@@ -31,8 +31,6 @@
 		<info>Generar el codigo del cliente</info>
 	</tag>
 
-
-
 	<tag>
 		<name>generarCodigoEmpleado</name>
 		<tagclass>com.cvpsa.appagenciaviajes.business.etiquetas.GenerarCodigoEmpleado
@@ -41,15 +39,13 @@
 		<info>Generar el codigo del empleado</info>
 	</tag>
 
-<tag>
+	<tag>
 		<name>categoriaEmpleado</name>
 		<tagclass>com.cvpsa.appagenciaviajes.business.etiquetas.CategoriaEmpleadoTag
 		</tagclass>
 		<bodycontent>empty</bodycontent>
 		<info>Carga la categoria del empleado</info>
 	</tag>
-
-
 
 	<tag>
 		<name>Departamento</name>
@@ -58,8 +54,6 @@
 		<bodycontent>empty</bodycontent>
 		<info>Carga los departamentos Origen y Destino</info>
 	</tag>
-
-
 
 	<tag>
 		<name>generarCodigoDepartamento</name>
@@ -76,7 +70,7 @@
 		<bodycontent>empty</bodycontent>
 		<info>lista los asientos</info>
 	</tag>
-	
+
 	<!-- <tag> -->
 	<!-- <name>fechaactual</name> -->
 	<!-- <tagclass>etiquetas.FechaActualTag</tagclass> -->

@@ -275,7 +275,7 @@ public class ClienteServlet extends HttpServlet {
 					String msjNombre = "Estimado " + nomCli + ":";
 					String msjPrimeraLinea = "El código de su reserva es " + codigoPasaje
 							+ ". Se ha enviado un email al correo registrado. ";
-					String msjSegundaLinea = "Si desea realizar algún cambio en su reserva, por favor inicie sesión.";
+					String msjSegundaLinea = "Usted cuenta con 3 días para realizar algún cambio en su reserva, si es así inicie sesión.";
 					request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre=" + msjNombre
 							+ "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea=" + msjSegundaLinea)
 							.forward(request, response);

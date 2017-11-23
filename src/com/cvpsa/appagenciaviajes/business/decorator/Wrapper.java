@@ -8,6 +8,7 @@ import org.displaytag.decorator.TableDecorator;
 
 import com.cvpsa.appagenciaviajes.business.bean.BusDTO;
 import com.cvpsa.appagenciaviajes.business.bean.DepartamentoDTO;
+import com.cvpsa.appagenciaviajes.business.bean.PasajeDTO;
 import com.cvpsa.appagenciaviajes.business.bean.ViajeDTO;
 import com.cvpsa.appagenciaviajes.business.services.AgenciaService;
 import com.cvpsa.appagenciaviajes.business.services.DepartamentoService;
@@ -81,6 +82,9 @@ public class Wrapper extends TableDecorator{
 	
 	
 	public String getSeleccionarPasajeWrapper ( ) {
+		
+		PasajeDTO pasajeDTO = ( PasajeDTO ) getCurrentRowObject();
+		
 		
 		// Validar la fecha del pasaje
 		// Si la fecha es menor a la actual, entonces hará el cambio

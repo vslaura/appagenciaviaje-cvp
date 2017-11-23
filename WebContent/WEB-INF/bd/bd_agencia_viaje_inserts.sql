@@ -12,7 +12,7 @@ insert into tb_agencia values ('AG007', 'Cruz del Sur', 'Habilitado');
 insert into tb_agencia values ('AG008', 'Flores', 'Habilitado');
 insert into tb_agencia values ('AG009', 'Exclusiva', 'Habilitado');
 insert into tb_agencia values ('AG010', 'Tepsa', 'Habilitado');
-insert into tb_agencia values ('AG011', 'Tepsa', 'Habilitado');
+insert into tb_agencia values ('AG011', 'Tu Agencia', 'Habilitado');
 
 insert into tb_categoria values(1,'Administrador');
 insert into tb_categoria values(2,'Chofer');

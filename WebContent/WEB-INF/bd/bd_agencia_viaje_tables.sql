@@ -113,11 +113,11 @@ references tb_agencia(codigoAgencia);
 
 create table tb_cliente(
 	cod_cli char(5) not null,
-    dni_cli char(8) not null,
+    dni_cli char(8) not null unique,
     nom_cli varchar(30) not null,
     apell_cli varchar(50) not null,
-    email_cli varchar(50) not null,
-    usu_cli varchar(30) not null,
+    email_cli varchar(50) not null unique,
+    usu_cli varchar(30) not null unique,
 	cla_cli varchar(30) not null
 );
 
