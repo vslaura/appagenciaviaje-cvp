@@ -14,7 +14,7 @@ import com.cvpsa.appagenciaviajes.business.utils.MySQLConexion;
 
 public class MySQLPasajeDAO implements PasajeDAO {
 
-	DataBase dataBase = new DataBase();
+//	DataBase dataBase = new DataBase();
 	
 	@Override
 	public int registrarPasaje(PasajeDTO pasajeDTO) {
@@ -33,7 +33,7 @@ public class MySQLPasajeDAO implements PasajeDAO {
 			pst.setString(3, pasajeDTO.getCodClie());
 			pst.setString(4, pasajeDTO.getCodVje());
 
-			dataBase.almacenarInsercion("pasaje", pst.toString(), "pasaje.txt");
+//			dataBase.almacenarInsercion("pasaje", pst.toString(), "pasaje.txt");
 			
 			rs = pst.executeUpdate();
 
