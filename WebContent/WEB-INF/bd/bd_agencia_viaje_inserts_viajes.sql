@@ -18,3 +18,16 @@ insert into tb_viaje values ('V0016', 'EA001', 'B0016', '2017/12/01', '2017/12/1
 insert into tb_viaje values ('V0017', 'EA001', 'B0017', '2017/12/01', '2017/12/10', 'DEP01', 'DEP03', 'AG007', 42, 135.0);
 insert into tb_viaje values ('V0018', 'EA001', 'B0018', '2017/12/01', '2017/12/10', 'DEP01', 'DEP03', 'AG008', 43, 145.0);
 insert into tb_viaje values ('V0019', 'EA001', 'B0019', '2017/12/01', '2017/12/10', 'DEP01', 'DEP03', 'AG009', 44, 155.0);
+
+
+
+insert into tb_viaje values ('V0020', 'EA001', 'B0010', '2017/11/23', '2017/12/10', 'DEP15', 'DEP04', 'AG010', 35, 65.0);
+insert into tb_viaje values ('V0021', 'EA001', 'B0011', '2017/11/23', '2017/12/10', 'DEP15', 'DEP04', 'AG001', 36, 75.0);
+insert into tb_viaje values ('V0022', 'EA001', 'B0012', '2017/11/23', '2017/12/10', 'DEP15', 'DEP04', 'AG002', 37, 85.0);
+insert into tb_viaje values ('V0023', 'EA001', 'B0013', '2017/11/23', '2017/12/10', 'DEP15', 'DEP04', 'AG003', 38, 95.0);
+insert into tb_viaje values ('V0024', 'EA001', 'B0014', '2017/11/23', '2017/12/10', 'DEP15', 'DEP04', 'AG004', 39, 105.0);
+insert into tb_viaje values ('V0025', 'EA001', 'B0015', '2017/11/23', '2017/12/10', 'DEP15', 'DEP04', 'AG005', 40, 115.0);
+insert into tb_viaje values ('V0026', 'EA001', 'B0016', '2017/11/23', '2017/12/10', 'DEP15', 'DEP04', 'AG006', 41, 125.0);
+insert into tb_viaje values ('V0027', 'EA001', 'B0017', '2017/11/23', '2017/12/10', 'DEP15', 'DEP04', 'AG007', 42, 135.0);
+insert into tb_viaje values ('V0028', 'EA001', 'B0018', '2017/11/23', '2017/12/10', 'DEP15', 'DEP04', 'AG008', 43, 145.0);
+insert into tb_viaje values ('V0029', 'EA001', 'B0019', '2017/11/23', '2017/12/10', 'DEP15', 'DEP04', 'AG009', 44, 155.0);

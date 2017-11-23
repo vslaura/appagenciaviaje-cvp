@@ -36,7 +36,7 @@ public class ViajeServiceTest {
 			
 		// A partir de 10...
 		for (int i = 0; i < 10; i++) {
-			ViajeDTO viajeDTO = new ViajeDTO("V001" + i, "EA001", "B001" + i, "2017/12/01", "2017/12/10", "DEP01", "DEP03",
+			ViajeDTO viajeDTO = new ViajeDTO(viajeService.codigoAutogenerado(), "EA001", "B001" + i, "2017/11/23", "2017/12/10", "DEP15", "DEP04",
 			( i == 0 ) ? "AG010" : "AG00" + i, 35 + i, 65.00 + ( i * 10 ));
 			
 			viajeService.registrarViaje(viajeDTO);

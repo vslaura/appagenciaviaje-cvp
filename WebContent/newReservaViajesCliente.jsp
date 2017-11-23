@@ -81,14 +81,15 @@
 				<h2>Mis Reservas</h2> <br>
 
 			</div>
-			<display:table name="${listaReservas}">
-			
-				<display:column title="Codigo Viaje" property="codVje"></display:column>
+			<display:table name="${listaReservas}" decorator="com.cvpsa.appagenciaviajes.business.decorator.Wrapper">
 				<display:column title="Codigo Reserva" property="codPje"></display:column>
+				<display:column title="Agencia" property="mostrarAgenciaPasajeWrapper"></display:column>
+				<display:column title="Origen" property="mostarDescripcionDepartamentoOrigenPasajeWrapper"></display:column>
+				<display:column title="Destino" property="mostarDescripcionDepartamentoDestinoPasajeWrapper"></display:column>
 				<display:column title="Nro Asiento" property="nroAsientoPje"></display:column>
 				<display:column title="Fec. Compra" property="fechComPje"></display:column>
 				<display:column title="Hora. Compra" property="horaComPsje"></display:column>
-			    
+				<display:column title="Seleccionar" property="seleccionarPasajeWrapper"></display:column>
 			</display:table>
 
 		</section>

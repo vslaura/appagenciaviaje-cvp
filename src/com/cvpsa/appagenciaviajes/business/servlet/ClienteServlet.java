@@ -249,6 +249,8 @@ public class ClienteServlet extends HttpServlet {
 
 			Date date = new Date();
 			
+			System.out.println(date);
+			
 			SimpleDateFormat sdfFecha = new SimpleDateFormat("yyyy-MM-dd");
 			SimpleDateFormat sdfHora = new SimpleDateFormat("hh:mm:ss");
 			

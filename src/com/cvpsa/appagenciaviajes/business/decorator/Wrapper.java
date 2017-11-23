@@ -84,20 +84,38 @@ public class Wrapper extends TableDecorator{
 	public String getSeleccionarPasajeWrapper ( ) {
 		
 		PasajeDTO pasajeDTO = ( PasajeDTO ) getCurrentRowObject();
+		String codigoPasaje = pasajeDTO.getCodPje();
 		
-		
-		// Validar la fecha del pasaje
-		// Si la fecha es menor a la actual, entonces hará el cambio
-		// Si no, debe indicar que no es posible realizarlo
-		
-		ViajeDTO viajeDTO = (ViajeDTO) getCurrentRowObject();
-		DepartamentoService departamentoService = new DepartamentoService();
-		String origen = departamentoService.obtenerDescripcionDepartamento(viajeDTO.getCodDepOrigen());
-		String destino = departamentoService.obtenerDescripcionDepartamento(viajeDTO.getCodDepDestino());
-		String fechaDestino = viajeDTO.getFecPartiVje();
-		String codigoViaje = viajeDTO.getCodVje();
-
-		return "<a href='newActualizarPasaje.jsp?origen=" + origen +"&&destino=" + destino +"&&fechaDestino=" + fechaDestino + "&&codigoViaje=" + codigoViaje +"'>Seleccionar</a>";
+		return "<a href='newIndex.jsp'>Seleccionar</a>";
 	}
 	
+	public String getMostarDescripcionDepartamentoOrigenPasajeWrapper ( ) {
+		
+		PasajeDTO pasajeDTO = ( PasajeDTO ) getCurrentRowObject();
+		ViajeService viajeService = new ViajeService();
+		ViajeDTO viajeDTO = viajeService.buscarViaje(pasajeDTO.getCodVje());
+		
+		DepartamentoService departamentoService = new DepartamentoService();
+		return departamentoService.obtenerDescripcionDepartamento(viajeDTO.getCodDepOrigen());
+	}
+	
+	public String getMostarDescripcionDepartamentoDestinoPasajeWrapper ( ) {
+		
+		PasajeDTO pasajeDTO = ( PasajeDTO ) getCurrentRowObject();
+		ViajeService viajeService = new ViajeService();
+		ViajeDTO viajeDTO = viajeService.buscarViaje(pasajeDTO.getCodVje());
+		
+		DepartamentoService departamentoService = new DepartamentoService();
+		return departamentoService.obtenerDescripcionDepartamento(viajeDTO.getCodDepDestino());
+	}
+	
+	public String getMostrarAgenciaPasajeWrapper ( ) { 
+		
+		PasajeDTO pasajeDTO = ( PasajeDTO ) getCurrentRowObject();
+		ViajeService viajeService = new ViajeService();
+		ViajeDTO viajeDTO = viajeService.buscarViaje(pasajeDTO.getCodVje());
+		
+		AgenciaService agenciaService = new AgenciaService();
+		return agenciaService.obtenerDescripcionAgencia(viajeDTO.getCodigoAgencia());
+	}
 }
