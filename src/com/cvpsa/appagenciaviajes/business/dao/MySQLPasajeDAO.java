@@ -25,7 +25,7 @@ public class MySQLPasajeDAO implements PasajeDAO {
 
 		try {
 			con = MySQLConexion.getConexion();
-				String sql = "insert into tb_pasaje values (?, ?, null, null, ?, ?, 'No');";
+				String sql = "insert into tb_pasaje values (?, ?, null, null, ?, ?, 'No', 'No');";
 
 			pst = con.prepareStatement(sql);
 			pst.setString(1, pasajeDTO.getCodPje());
@@ -73,23 +73,6 @@ public class MySQLPasajeDAO implements PasajeDAO {
 	@Override
 	public int actualizarPasaje(PasajeDTO pasajeDTO) {
 		
-//		Connection con = null;
-//		PreparedStatement pst = null;
-//		int rs = 0;
-//		try {
-//			
-//			con = MySQLConexion.getConexion(); 
-//
-//			String sql = "update tb_cliente  set nom_cli =?, apell_cli =?,email_cli =?,usu_cli =?,cla_cli =? where cod_cli =?";
-//			pst = con.prepareStatement(sql);
-//			
-//			
-//			pst.setString(1, pasajeDTO.getNroAsientoPje());
-//			pst.setString(2, pasajeDTO.getFechComPje());
-//			pst.setString(3, pasajeDTO.getEmailCli());
-//			pst.setString(4, pasajeDTO.getUsuarioCli());
-//			pst.setString(5, pasajeDTO.getClaveCli());
-//			pst.setString(6, pasajeDTO.getCodCli());
 		return 0;
 	}
 
@@ -153,7 +136,7 @@ public class MySQLPasajeDAO implements PasajeDAO {
 		
 			while (rs.next()) {
 				listaPasajes.add(new PasajeDTO(rs.getString(1), rs.getInt(2), rs.getString(3),
-						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
 
 			}
 
@@ -196,7 +179,7 @@ public class MySQLPasajeDAO implements PasajeDAO {
 			while ( rs.next() ) {
 				
 				listaPasajes.add(new PasajeDTO(rs.getString(1), rs.getInt(2), rs.getString(3),
-						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
 				
 			}
 			
@@ -237,7 +220,7 @@ public class MySQLPasajeDAO implements PasajeDAO {
 			while ( rs.next() ) {
 				
 				listaPasajes.add(new PasajeDTO(rs.getString(1), rs.getInt(2), rs.getString(3),
-						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+						rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8)));
 				
 			}
 			
@@ -257,16 +240,23 @@ public class MySQLPasajeDAO implements PasajeDAO {
 	}
 
 	@Override
-	public int adquirirPasajeCliente( String codigoCliente, String fechaReserva, String horaReserva, String codigoPasaje ) {
+	public int adquirirPasajeCliente( String codigoCliente, String fechaReserva, String horaReserva, String codigoPasaje, String cambio) {
 		
 		Connection con = null;
 		PreparedStatement pst = null;
 		int rs = 0;
 		
+		String sql = "";
+		
 		try {
 			
 			con = MySQLConexion.getConexion();
-			String sql = "update tb_pasaje set cod_cli = ?, reservado = 'Si', fech_comp_psje = ?, hora_psje = ? where cod_psje = ?;";
+			
+			if ( cambio.equals("Si")) {
+				sql = "update tb_pasaje set cod_cli = ?, reservado = 'Si', fech_comp_psje = ?, hora_psje = ?, actualizado = 'Si' where cod_psje = ?;";
+			} else {
+				sql = "update tb_pasaje set cod_cli = ?, reservado = 'Si', fech_comp_psje = ?, hora_psje = ? where cod_psje = ?;";
+			}
 			
 			pst = con.prepareStatement(sql);
 			

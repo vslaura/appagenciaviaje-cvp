@@ -75,14 +75,15 @@ references tb_estado_bus (cod_est_bus);
 
 create table tb_viaje(
 	cod_vje char(5) not null,
-	cod_em  char(5) not null,
-	cod_bus char(5) not null,
-    fec_par_vje date not null,
-    fec_lleg_vje date not null,
-    cod_dep_origen char(5) not null,
-    cod_dep_destino char(5) not null,
-    codigoAgencia varchar(8) not null,
-	cantidadAsientos int not null,
+	cod_em  char(5) null,
+	cod_bus char(5) null,
+    fec_par_vje date null,
+	hora_par_vje time null,
+    fec_lleg_vje date null,
+    cod_dep_origen char(5) null,
+    cod_dep_destino char(5) null,
+    codigoAgencia varchar(8) null,
+	cantidadAsientos int null,
 	precioViaje double null
 );
 
@@ -131,7 +132,8 @@ create table tb_pasaje (
 	hora_psje time null,
     cod_cli char(5) null,
     cod_vje char(5) not null,
-	reservado varchar(30) null
+	reservado varchar(30) null,
+	actualizado varchar(30) null
 );
 
 alter table tb_pasaje

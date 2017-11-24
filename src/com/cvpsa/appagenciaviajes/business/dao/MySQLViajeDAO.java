@@ -25,19 +25,20 @@ public class MySQLViajeDAO implements ViajeDAO {
 
 		try {
 			con = MySQLConexion.getConexion();
-			String sql = "insert into tb_viaje values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+			String sql = "insert into tb_viaje values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
 			pst = con.prepareStatement(sql);
 			pst.setString(1, viajeDTO.getCodVje());
 			pst.setString(2, viajeDTO.getCodEmp());
 			pst.setString(3, viajeDTO.getCodBus());
 			pst.setString(4, viajeDTO.getFecPartiVje());
-			pst.setString(5, viajeDTO.getFecLlgarVje());
-			pst.setString(6, viajeDTO.getCodDepOrigen());
-			pst.setString(7, viajeDTO.getCodDepDestino());
-			pst.setString(8, viajeDTO.getCodigoAgencia());
-			pst.setInt(9, viajeDTO.getCantidadAsientos());
-			pst.setDouble(10, viajeDTO.getPrecioViaje());
+			pst.setString(5, viajeDTO.getHoraPartivje());
+			pst.setString(6, viajeDTO.getFecLlgarVje());
+			pst.setString(7, viajeDTO.getCodDepOrigen());
+			pst.setString(8, viajeDTO.getCodDepDestino());
+			pst.setString(9, viajeDTO.getCodigoAgencia());
+			pst.setInt(10, viajeDTO.getCantidadAsientos());
+			pst.setDouble(11, viajeDTO.getPrecioViaje());
 
 //			dataBase.almacenarInsercion("viaje", pst.toString(), "viaje.txt");
 
@@ -76,7 +77,7 @@ public class MySQLViajeDAO implements ViajeDAO {
 
 				while (rs.next()) {
 				listaViajes.add(new ViajeDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10)));
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getDouble(11)));
 			}
 
 		} catch (Exception e) {
@@ -115,7 +116,8 @@ public class MySQLViajeDAO implements ViajeDAO {
 
 		
 			while (rs.next()) {
-				viajeDTO = new ViajeDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10));
+				viajeDTO = new ViajeDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getDouble(11));
 			}
 			
 		} catch (Exception e) {
@@ -156,7 +158,7 @@ public class MySQLViajeDAO implements ViajeDAO {
 	
 			while (rs.next()) {
 				listaViajes.add(new ViajeDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9), rs.getDouble(10)));
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getInt(10), rs.getDouble(11)));
 			}
 
 		} catch (Exception e) {

@@ -11,9 +11,10 @@ public class PasajeDTO {
 	private String codClie;
 	private String codVje;
 	private String disponible;
+	private String actualizado;
 
-	public PasajeDTO(String codPje, int nroAsientoPje, String fechComPje, String horaComPsje, String codClie, String codVje,
-			String disponible) {
+	public PasajeDTO(String codPje, int nroAsientoPje, String fechComPje, String horaComPsje, String codClie,
+			String codVje, String disponible, String actualizado) {
 		super();
 		this.codPje = codPje;
 		this.nroAsientoPje = nroAsientoPje;
@@ -22,6 +23,7 @@ public class PasajeDTO {
 		this.codClie = codClie;
 		this.codVje = codVje;
 		this.disponible = disponible;
+		this.actualizado = actualizado;
 	}
 
 	public String getCodPje() {
@@ -78,6 +80,14 @@ public class PasajeDTO {
 
 	public void setHoraComPsje(String horaComPsje) {
 		this.horaComPsje = horaComPsje;
+	}
+
+	public String getActualizado() {
+		return actualizado;
+	}
+
+	public void setActualizado(String actualizado) {
+		this.actualizado = actualizado;
 	}
 
 }

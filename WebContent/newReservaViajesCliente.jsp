@@ -88,8 +88,9 @@
 				<display:column title="Destino" property="mostarDescripcionDepartamentoDestinoPasajeWrapper"></display:column>
 				<display:column title="Nro Asiento" property="nroAsientoPje"></display:column>
 				<display:column title="Fec. Compra" property="fechComPje"></display:column>
-				<display:column title="Hora. Compra" property="horaComPsje"></display:column>
-				<display:column title="Seleccionar" property="seleccionarPasajeWrapper"></display:column>
+				<display:column title="Hora. Compra" property="horaComPsje"></display:column>				
+				<display:column title="Actualizado" property="actualizado"></display:column>
+				<display:column title="Modificar" property="seleccionarPasajeWrapper"></display:column>				
 			</display:table>
 
 		</section>

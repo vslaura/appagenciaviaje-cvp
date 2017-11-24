@@ -2,6 +2,7 @@ package com.cvpsa.appagenciaviajes.business.decorator;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.displaytag.decorator.TableDecorator;
@@ -86,6 +87,9 @@ public class Wrapper extends TableDecorator{
 		PasajeDTO pasajeDTO = ( PasajeDTO ) getCurrentRowObject();
 		String codigoPasaje = pasajeDTO.getCodPje();
 		
+		if ( pasajeDTO.getActualizado().equals("Si")) {
+			return "No disponible";
+		}
 		return "<a href='newIndex.jsp?codigoPasaje=" + codigoPasaje + "'>Seleccionar</a>";
 	}
 	

@@ -203,24 +203,59 @@ public class ClienteServlet extends HttpServlet {
 			String codigoPasajeAnterior = (String) session.getAttribute("codigoPasajeSession");
 			int resultadoCambio = pasajeService.deshabilitarPasajeCliente(codigoPasajeAnterior);
 
-			if (resultadoCambio != 0) {
-				System.out.println("Pasaje anterior deshabilitado");
-			}
-
+			int resultadoAdquirirPasaje = 0;
+			
 			String codigoPasaje = request.getParameter("cboAsiento");
-
 			Date date = new Date();
 			SimpleDateFormat sdfFecha = new SimpleDateFormat("yyyy-MM-dd");
 			SimpleDateFormat sdfHora = new SimpleDateFormat("hh:mm:ss");
 
 			String fechaReserva = sdfFecha.format(date).toString();
 			String horaReserva = sdfHora.format(date);
+			
+			
+			if (resultadoCambio != 0) {
+				System.out.println("Pasaje anterior deshabilitado");
+				
+				resultadoAdquirirPasaje = pasajeService.adquirirPasaje(codigoCliente, fechaReserva, horaReserva,
+						codigoPasaje, "Si");
+			} else {
+				
+				resultadoAdquirirPasaje = pasajeService.adquirirPasaje(codigoCliente, fechaReserva, horaReserva,
+						codigoPasaje, "No");
+			}
 
-			int resultadoAdquirirPasaje = pasajeService.adquirirPasaje(codigoCliente, fechaReserva, horaReserva,
-					codigoPasaje);
+			if (resultadoAdquirirPasaje != 0 && resultadoCambio != 0) {
 
-			if (resultadoAdquirirPasaje != 0) {
+				System.out.println("Pasaje Actualizado");
+				Mail mail = new Mail();
+				mail.SendMail(emailCliente, "Agencia de Viajes CVP s.a", "\n" + nombreCliente + " " + apellidoCliente
+						+ " - " + codigoCliente
+						+ ".\n\nConfirmación de Reserva.\n Estimado(a):\nSe realizó la actualización de su Reserva de Pasaje\n su código de es el "
+						+ codigoPasaje + " por el monto de \nS/.45.00 - por orden de nuestro cliente " + nombreCliente
+						+ " " + apellidoCliente + ". \n\nFecha y hora de la operación: " + fechaReserva + " "
+						+ horaReserva + ".\n\nUsted ya no puede realizar otra modificación en su reserva." 
+						+ "\n\nAtentamente, CVP s.a Agencia de Viajes.\n\n\n*************************** AVISO LEGAL  *************************\n\nEste mensaje es solamente para la persona a la que va dirigido.\n Puede contener información confidencial o legalmente protegida.\n No hay renunciaa la confidencialidad o privilegio por cualquier\n transmisión mala/errónea.Si usted ha recibido este mensaje \npor error,le rogamos que borre de susistema inmediatamente \nel mensaje asi como todas sus copias, destruya todasde \nsu disco duro y notifique al remitente. No debe,directa o \nindirectamenteusar, revelar, distribuir, imprimir o copiar\n ninguna de las partes de este mensaje si no es\n usted el destinatario. Cualquier opinión expresada en\n este mensaje proviene del remitente,excepto cuando el mensaje\n establezca locontrario y el remitente esta autorizado\n para establecer que dichas opiniones provienen\n de CVP s.a. Nótese que el correo electrónico viaInternet no\n permite asegurar ni la confidencialidad de los mensajes que \nse transmiten ni la correcta recepción de los mismos. En \nel caso de que eldestinatario de este mensaje no consintiera \nla utilización del correo electrónico via Internet,\nrogamos lo ponga en nuestro conocimiento de manera inmediata. ");
 
+				try {
+					String msjTitulo = "Su reserva se ha actualizado con éxito.";
+					String msjNombre = "Estimado " + nombreCliente + ":";
+					String msjPrimeraLinea = "El código de su reserva es " + codigoPasaje
+							+ ". Se ha enviado un email al correo registrado. ";
+					String msjSegundaLinea = "Usted ya no puede realizar ningún cambio en su reserva.";
+					request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre=" + msjNombre
+							+ "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea=" + msjSegundaLinea)
+							.forward(request, response);
+				} catch (ServletException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			} else {
+				
 				System.out.println("Pasaje Registrado");
 				Mail mail = new Mail();
 				mail.SendMail(emailCliente, "Agencia de Viajes CVP s.a", "\n" + nombreCliente + " " + apellidoCliente
@@ -247,17 +282,16 @@ public class ClienteServlet extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
-			} 
+			}
 		} else {
 
-			if (clienteService.buscarClienteCorreo(emailCliente) != null) {
+			if ( clienteService.buscarClienteDni(dniCliente) != null ) {
 
-				System.out.println("Email registrado ");
+				System.out.println("DNI registrado ");
 				try {
-					String msjTitulo = "E-mail registrado.";
+					String msjTitulo = "DNI registrado.";
 					String msjNombre = "Estimado(a) " + nombreCliente + ":";
-					String msjPrimeraLinea = "Su e-mail ya se encuentra registrado, por favor verifique su correo.";
+					String msjPrimeraLinea = "Su DNI ya se encuentra registrado, por favor seleccione la opción olvidó contraseña.";
 					String msjSegundaLinea = "";
 					request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre="
 							+ msjNombre + "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea="
@@ -269,13 +303,14 @@ public class ClienteServlet extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-			} else if (clienteService.buscarClienteDni(dniCliente) != null) {
+				
+			} else if ( clienteService.buscarClienteCorreo(emailCliente) != null ) {
 
-				System.out.println("DNI registrado ");
+				System.out.println("Email registrado ");
 				try {
-					String msjTitulo = "DNI registrado.";
+					String msjTitulo = "E-mail registrado.";
 					String msjNombre = "Estimado(a) " + nombreCliente + ":";
-					String msjPrimeraLinea = "Su DNI ya se encuentra registrado, por favor seleccione la opción olvidó contraseña.";
+					String msjPrimeraLinea = "Su e-mail ya se encuentra registrado, por favor verifique su correo.";
 					String msjSegundaLinea = "";
 					request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre="
 							+ msjNombre + "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea="
@@ -313,7 +348,7 @@ public class ClienteServlet extends HttpServlet {
 				String horaReserva = sdfHora.format(date);
 
 				int resultadoAdquirirPasaje = pasajeService.adquirirPasaje(codigoCliente, fechaReserva, horaReserva,
-						codigoPasaje);
+						codigoPasaje, "No");
 
 				if (resultadoAdquirirPasaje != 0) {
 

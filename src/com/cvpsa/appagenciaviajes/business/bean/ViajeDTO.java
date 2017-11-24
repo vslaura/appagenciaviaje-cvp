@@ -6,6 +6,7 @@ public class ViajeDTO {
 	private String codEmp;
 	private String codBus;
 	private String fecPartiVje;
+	private String horaPartivje;
 	private String fecLlgarVje;
 	private String codDepOrigen;
 	private String codDepDestino;
@@ -13,12 +14,14 @@ public class ViajeDTO {
 	private int cantidadAsientos;
 	private double precioViaje;
 
-	public ViajeDTO(String codVje, String codEmp, String codBus, String fecPartiVje, String fecLlgarVje,
-			String codDepOrigen, String codDepDestino, String codigoAgencia, int cantidadASientos, double precioViaje) {
+	public ViajeDTO(String codVje, String codEmp, String codBus, String fecPartiVje, String horaPartivje,
+			String fecLlgarVje, String codDepOrigen, String codDepDestino, String codigoAgencia, int cantidadASientos,
+			double precioViaje) {
 		this.codVje = codVje;
 		this.codEmp = codEmp;
 		this.codBus = codBus;
 		this.fecPartiVje = fecPartiVje;
+		this.horaPartivje = horaPartivje;
 		this.fecLlgarVje = fecLlgarVje;
 		this.codDepOrigen = codDepOrigen;
 		this.codDepDestino = codDepDestino;
@@ -105,6 +108,14 @@ public class ViajeDTO {
 
 	public void setPrecioViaje(double precioViaje) {
 		this.precioViaje = precioViaje;
+	}
+
+	public String getHoraPartivje() {
+		return horaPartivje;
+	}
+
+	public void setHoraPartivje(String horaPartivje) {
+		this.horaPartivje = horaPartivje;
 	}
 
 }
