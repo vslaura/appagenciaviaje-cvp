@@ -259,10 +259,10 @@ public class ClienteServlet extends HttpServlet {
 			
 			PasajeService pasajeService = new PasajeService();
 			
-			System.out.println("Cambiar pasaje");
-			HttpSession session = request.getSession();
-			String codigoPasajeAnterior = ( String )session.getAttribute("codigoPasajeSession");
-			pasajeService.deshabilitarPasajeCliente(codigoPasajeAnterior);
+//			System.out.println("Cambiar pasaje");
+//			HttpSession session = request.getSession();
+//			String codigoPasajeAnterior = ( String )session.getAttribute("codigoPasajeSession");
+//			pasajeService.deshabilitarPasajeCliente(codigoPasajeAnterior);
 
 			int resultadoAdquirirPasaje = pasajeService.adquirirPasaje(codCli, fechaReserva, horaReserva, codigoPasaje);
 
