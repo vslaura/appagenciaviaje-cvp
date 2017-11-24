@@ -72,7 +72,7 @@ public class ClienteServlet extends HttpServlet {
 			iniciarSesion(request, response);
 			break;
 		case "recuperarPassword":
-			recuperarPassword(request,response);
+			recuperarPassword(request, response);
 			break;
 		case "salir":
 			salir(request, response);
@@ -83,19 +83,20 @@ public class ClienteServlet extends HttpServlet {
 	}
 
 	private void recuperarPassword(HttpServletRequest request, HttpServletResponse response) {
-		
+
 		String correo = request.getParameter("txtCorreo");
-		
+
 		ClienteService clienteService = new ClienteService();
 		ClienteDTO clienteDTO = clienteService.buscarClienteCorreo(correo);
-	
-		if(clienteDTO != null){
+
+		if (clienteDTO != null) {
 			Mail mail = new Mail();
-			mail.SendMail(correo, "Recordatorio de password - Agencia de Viajes CVP S.A" , "\n" + "Estimado(a) " + clienteDTO.getNomCli() + ":" + "\nSu contraseña es: " + clienteDTO.getClaveCli());
-			
+			mail.SendMail(correo, "Recordatorio de password - Agencia de Viajes CVP S.A", "\n" + "Estimado(a) "
+					+ clienteDTO.getNomCli() + ":" + "\nSu contraseña es: " + clienteDTO.getClaveCli());
+
 			try {
 				String msjTitulo = "Contraseña fue enviada con éxito";
-				String msjNombre = "Estimado(a) " + clienteDTO.getNomCli()+ ":";
+				String msjNombre = "Estimado(a) " + clienteDTO.getNomCli() + ":";
 				String msjPrimeraLinea = "Se ha enviado a su correo la contraseña";
 				String msjSegundaLinea = "Por favor verifique en su bandeja de entrada, y vuelva a  iniciar sesión.";
 				request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre=" + msjNombre
@@ -107,13 +108,13 @@ public class ClienteServlet extends HttpServlet {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			} 
+			}
 
 		} else {
 			try {
 				String msjTitulo = "Correo Incorrecto";
-				String msjNombre = "Estimado(a) " + clienteDTO.getNomCli()+ ":";
-				String msjPrimeraLinea = "El correo Ingresado es Incorreo " ;
+				String msjNombre = "Estimado(a) " + clienteDTO.getNomCli() + ":";
+				String msjPrimeraLinea = "El correo Ingresado es Incorreo ";
 				String msjSegundaLinea = "Si desea recuperar su contraeña, por favor vuelva a intentarlo";
 				request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre=" + msjNombre
 						+ "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea=" + msjSegundaLinea)
@@ -127,7 +128,7 @@ public class ClienteServlet extends HttpServlet {
 			}
 
 		}
-		
+
 	}
 
 	/**
@@ -179,106 +180,60 @@ public class ClienteServlet extends HttpServlet {
 
 	private void registarCliente(HttpServletRequest request, HttpServletResponse response) {
 
-		String codCli = request.getParameter("txtCodigoCliente");
-		String dniCli = request.getParameter("txtDNI");
-		String nomCli = request.getParameter("txtNombres");
-		String apeCli = request.getParameter("txtApellidos");
-		String emailCli = request.getParameter("txtEmail");
-		String usuCli = request.getParameter("txtUsuario");
-		String claveCli = request.getParameter("txtClave");
+		String codigoCliente = request.getParameter("txtCodigoCliente");
+		String dniCliente = request.getParameter("txtDNI");
+		String nombreCliente = request.getParameter("txtNombres");
+		String apellidoCliente = request.getParameter("txtApellidos");
+		String emailCliente = request.getParameter("txtEmail");
+		String usuarioCliente = request.getParameter("txtUsuario");
+		String claveCliente = request.getParameter("txtClave");
+
+		HttpSession session = request.getSession();
+		ClienteDTO usuarioSession = (ClienteDTO) session.getAttribute("usuarioSession");
 
 		ClienteService clienteService = new ClienteService();
-		
-		ClienteDTO comprabarDNI = clienteService.buscarClienteDni(dniCli);
-		ClienteDTO comprobarEmail = clienteService.buscarClienteCorreo(emailCli);
-		
-		if ( comprabarDNI != null ) {
-			
-			System.out.println( "DNI registrado ");
-			try {
-				String msjTitulo = "DNI registrado.";
-				String msjNombre = "Estimado(a) " + nomCli + ":";
-				String msjPrimeraLinea = "Su DNI ya se encuentra registrado, por favor seleccione la opción olvidó contraseña.";
-				String msjSegundaLinea = "";
-				request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre=" + msjNombre
-						+ "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea=" + msjSegundaLinea)
-						.forward(request, response);
-			} catch (ServletException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-		} else if ( comprobarEmail != null ) {
-			
-			System.out.println( "Email registrado ");
-			try {
-				String msjTitulo = "E-mail registrado.";
-				String msjNombre = "Estimado(a) " + nomCli + ":";
-				String msjPrimeraLinea = "Su e-mail ya se encuentra registrado, por favor verifique su correo.";
-				String msjSegundaLinea = "";
-				request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre=" + msjNombre
-						+ "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea=" + msjSegundaLinea)
-						.forward(request, response);
-			} catch (ServletException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		PasajeService pasajeService = new PasajeService();
 
-		} else {
-			
-			int resultadoRegistroCliente = 0;
-			
-			if (codCli.equals("") || codCli == null) {
-				codCli = clienteService.obtenerCodigoAutogenerado();
-				ClienteDTO clienteDTO = new ClienteDTO(codCli, dniCli, nomCli, apeCli, emailCli, usuCli, claveCli);
-				resultadoRegistroCliente = clienteService.registrarEmpleados(clienteDTO);
-				
-				if ( resultadoRegistroCliente != 0 ) {
-					System.out.println( "Cliente registrado");
-				}
+		if (usuarioSession != null) {
+
+			System.out.println("Cliente en session");
+
+			System.out.println("Cambiando pasaje");
+
+			String codigoPasajeAnterior = (String) session.getAttribute("codigoPasajeSession");
+			int resultadoCambio = pasajeService.deshabilitarPasajeCliente(codigoPasajeAnterior);
+
+			if (resultadoCambio != 0) {
+				System.out.println("Pasaje anterior deshabilitado");
 			}
 
 			String codigoPasaje = request.getParameter("cboAsiento");
 
 			Date date = new Date();
-			
-			System.out.println(date);
-			
 			SimpleDateFormat sdfFecha = new SimpleDateFormat("yyyy-MM-dd");
 			SimpleDateFormat sdfHora = new SimpleDateFormat("hh:mm:ss");
-			
+
 			String fechaReserva = sdfFecha.format(date).toString();
 			String horaReserva = sdfHora.format(date);
-			
-			
-			PasajeService pasajeService = new PasajeService();
-			
-//			System.out.println("Cambiar pasaje");
-//			HttpSession session = request.getSession();
-//			String codigoPasajeAnterior = ( String )session.getAttribute("codigoPasajeSession");
-//			pasajeService.deshabilitarPasajeCliente(codigoPasajeAnterior);
 
-			int resultadoAdquirirPasaje = pasajeService.adquirirPasaje(codCli, fechaReserva, horaReserva, codigoPasaje);
+			int resultadoAdquirirPasaje = pasajeService.adquirirPasaje(codigoCliente, fechaReserva, horaReserva,
+					codigoPasaje);
 
 			if (resultadoAdquirirPasaje != 0) {
 
 				System.out.println("Pasaje Registrado");
 				Mail mail = new Mail();
-				mail.SendMail(emailCli, "Agencia de Viajes CVP s.a", "\n" + nomCli + " " + apeCli + " - " + codCli
+				mail.SendMail(emailCliente, "Agencia de Viajes CVP s.a", "\n" + nombreCliente + " " + apellidoCliente
+						+ " - " + codigoCliente
 						+ ".\n\nConfirmación de Reserva.\n Estimado(a):\nSe realizó la Operación Reserva de Pasaje\n su código de es el "
-						+ codigoPasaje + " por el monto de \nS/.45.00 - por orden de nuestro cliente " + nomCli
-						+ " " + apeCli + ". \n\nFecha y hora de la operación: " + fechaReserva + " " + horaReserva
+						+ codigoPasaje + " por el monto de \nS/.45.00 - por orden de nuestro cliente " + nombreCliente
+						+ " " + apellidoCliente + ". \n\nFecha y hora de la operación: " + fechaReserva + " "
+						+ horaReserva
 						+ ". \n\nAtentamente, CVP s.a Agencia de Viajes.\n\n\n*************************** AVISO LEGAL  *************************\n\nEste mensaje es solamente para la persona a la que va dirigido.\n Puede contener información confidencial o legalmente protegida.\n No hay renunciaa la confidencialidad o privilegio por cualquier\n transmisión mala/errónea.Si usted ha recibido este mensaje \npor error,le rogamos que borre de susistema inmediatamente \nel mensaje asi como todas sus copias, destruya todasde \nsu disco duro y notifique al remitente. No debe,directa o \nindirectamenteusar, revelar, distribuir, imprimir o copiar\n ninguna de las partes de este mensaje si no es\n usted el destinatario. Cualquier opinión expresada en\n este mensaje proviene del remitente,excepto cuando el mensaje\n establezca locontrario y el remitente esta autorizado\n para establecer que dichas opiniones provienen\n de CVP s.a. Nótese que el correo electrónico viaInternet no\n permite asegurar ni la confidencialidad de los mensajes que \nse transmiten ni la correcta recepción de los mismos. En \nel caso de que eldestinatario de este mensaje no consintiera \nla utilización del correo electrónico via Internet,\nrogamos lo ponga en nuestro conocimiento de manera inmediata. ");
 
 				try {
 					String msjTitulo = "Su reserva se ha registrado con éxito.";
-					String msjNombre = "Estimado " + nomCli + ":";
+					String msjNombre = "Estimado " + nombreCliente + ":";
 					String msjPrimeraLinea = "El código de su reserva es " + codigoPasaje
 							+ ". Se ha enviado un email al correo registrado. ";
 					String msjSegundaLinea = "Usted cuenta con 3 días para realizar algún cambio en su reserva, si es así inicie sesión.";
@@ -292,6 +247,105 @@ public class ClienteServlet extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+
+			} 
+		} else {
+
+			if (clienteService.buscarClienteCorreo(emailCliente) != null) {
+
+				System.out.println("Email registrado ");
+				try {
+					String msjTitulo = "E-mail registrado.";
+					String msjNombre = "Estimado(a) " + nombreCliente + ":";
+					String msjPrimeraLinea = "Su e-mail ya se encuentra registrado, por favor verifique su correo.";
+					String msjSegundaLinea = "";
+					request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre="
+							+ msjNombre + "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea="
+							+ msjSegundaLinea).forward(request, response);
+				} catch (ServletException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else if (clienteService.buscarClienteDni(dniCliente) != null) {
+
+				System.out.println("DNI registrado ");
+				try {
+					String msjTitulo = "DNI registrado.";
+					String msjNombre = "Estimado(a) " + nombreCliente + ":";
+					String msjPrimeraLinea = "Su DNI ya se encuentra registrado, por favor seleccione la opción olvidó contraseña.";
+					String msjSegundaLinea = "";
+					request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre="
+							+ msjNombre + "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea="
+							+ msjSegundaLinea).forward(request, response);
+				} catch (ServletException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			} else {
+
+				int resultadoRegistroCliente = 0;
+
+				if (codigoCliente.equals("") || codigoCliente == null) {
+					codigoCliente = clienteService.obtenerCodigoAutogenerado();
+					ClienteDTO clienteDTO = new ClienteDTO(codigoCliente, dniCliente, nombreCliente,
+							apellidoCliente, emailCliente, usuarioCliente, claveCliente);
+					resultadoRegistroCliente = clienteService.registrarEmpleados(clienteDTO);
+
+					if (resultadoRegistroCliente != 0) {
+						System.out.println("Cliente registrado");
+					}
+				}
+				
+				String codigoPasaje = request.getParameter("cboAsiento");
+
+				Date date = new Date();
+				SimpleDateFormat sdfFecha = new SimpleDateFormat("yyyy-MM-dd");
+				SimpleDateFormat sdfHora = new SimpleDateFormat("hh:mm:ss");
+
+				String fechaReserva = sdfFecha.format(date).toString();
+				String horaReserva = sdfHora.format(date);
+
+				int resultadoAdquirirPasaje = pasajeService.adquirirPasaje(codigoCliente, fechaReserva, horaReserva,
+						codigoPasaje);
+
+				if (resultadoAdquirirPasaje != 0) {
+
+					System.out.println("Pasaje Registrado");
+					Mail mail = new Mail();
+					mail.SendMail(emailCliente, "Agencia de Viajes CVP s.a", "\n" + nombreCliente + " " + apellidoCliente
+							+ " - " + codigoCliente
+							+ ".\n\nConfirmación de Reserva.\n Estimado(a):\nSe realizó la Operación Reserva de Pasaje\n su código de es el "
+							+ codigoPasaje + " por el monto de \nS/.45.00 - por orden de nuestro cliente " + nombreCliente
+							+ " " + apellidoCliente + ". \n\nFecha y hora de la operación: " + fechaReserva + " "
+							+ horaReserva
+							+ ". \n\nAtentamente, CVP s.a Agencia de Viajes.\n\n\n*************************** AVISO LEGAL  *************************\n\nEste mensaje es solamente para la persona a la que va dirigido.\n Puede contener información confidencial o legalmente protegida.\n No hay renunciaa la confidencialidad o privilegio por cualquier\n transmisión mala/errónea.Si usted ha recibido este mensaje \npor error,le rogamos que borre de susistema inmediatamente \nel mensaje asi como todas sus copias, destruya todasde \nsu disco duro y notifique al remitente. No debe,directa o \nindirectamenteusar, revelar, distribuir, imprimir o copiar\n ninguna de las partes de este mensaje si no es\n usted el destinatario. Cualquier opinión expresada en\n este mensaje proviene del remitente,excepto cuando el mensaje\n establezca locontrario y el remitente esta autorizado\n para establecer que dichas opiniones provienen\n de CVP s.a. Nótese que el correo electrónico viaInternet no\n permite asegurar ni la confidencialidad de los mensajes que \nse transmiten ni la correcta recepción de los mismos. En \nel caso de que eldestinatario de este mensaje no consintiera \nla utilización del correo electrónico via Internet,\nrogamos lo ponga en nuestro conocimiento de manera inmediata. ");
+
+					try {
+						String msjTitulo = "Su reserva se ha registrado con éxito.";
+						String msjNombre = "Estimado " + nombreCliente + ":";
+						String msjPrimeraLinea = "El código de su reserva es " + codigoPasaje
+								+ ". Se ha enviado un email al correo registrado. ";
+						String msjSegundaLinea = "Usted cuenta con 3 días para realizar algún cambio en su reserva, si es así inicie sesión.";
+						request.getRequestDispatcher("/newResultado.jsp?msjTitulo=" + msjTitulo + "&&msjNombre=" + msjNombre
+								+ "&&msjPrimeraLinea=" + msjPrimeraLinea + "&&msjSegundaLinea=" + msjSegundaLinea)
+								.forward(request, response);
+					} catch (ServletException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
+				} 
+
 
 			}
 		}
