@@ -60,6 +60,7 @@
 			<div class="cuerpo-formulario">
 				<form action="">
 
+					<input type="hidden" value="${param.codigoPasaje}" name="codigoPasaje">
 					<input type="hidden" value="registrarCliente" name="operacion">
 					<input type="hidden" value="${usuarioSession.getCodCli()}"
 						name="txtCodigoCliente"> <input type="hidden"

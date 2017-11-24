@@ -34,4 +34,8 @@ public class PasajeService {
 	public int adquirirPasaje ( String codigoCliente, String fechaReserva, String horaReserva, String codigoPasaje ) {
 		return getPasajeDAO.adquirirPasajeCliente(codigoCliente, fechaReserva, horaReserva, codigoPasaje);
 	}
+	
+	public int deshabilitarPasajeCliente ( String codigoPasaje ) {
+		return getPasajeDAO.deshabilitarPasajeCliente(codigoPasaje);
+	}
 }

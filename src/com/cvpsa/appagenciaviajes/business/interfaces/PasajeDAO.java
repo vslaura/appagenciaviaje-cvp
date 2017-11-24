@@ -22,4 +22,5 @@ public interface PasajeDAO {
 	
 	public int adquirirPasajeCliente ( String codigoCliente, String fechaReserva, String horaReserva, String codigoPasaje );
 	
+	public int deshabilitarPasajeCliente ( String codigoPasaje ); 
 }

@@ -292,6 +292,39 @@ public class MySQLPasajeDAO implements PasajeDAO {
 		return rs;
 	}
 
+	@Override
+	public int deshabilitarPasajeCliente( String codigoPasaje ) {
+	
+		Connection con = null;
+		PreparedStatement pst = null;
+		int rs = 0;
+		
+		try {
+			
+			con = MySQLConexion.getConexion();
+			String sql = "update tb_pasaje set cod_cli = '', reservado = 'No', fech_comp_psje = null, hora_psje = null where cod_psje = ?;";
+			
+			pst = con.prepareStatement(sql);
+			
+			pst.setString(1, codigoPasaje);
+			
+			rs = pst.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("Error en la sentencia obtener pasaje: " + e);
+		} finally {
+			try {
+				if (pst != null)
+					pst.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				System.out.println("Error al cerrar ");
+			}
+		}
+		return rs;
+	}
+
 }
  
 

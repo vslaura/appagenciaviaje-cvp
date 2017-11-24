@@ -46,13 +46,19 @@ public class PasajeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		procesarPasaje(request, response);
 	}
 
 	private void procesarPasaje(HttpServletRequest request, HttpServletResponse response) {
 
 		String operacion = request.getParameter("operacion");
+		
+		HttpSession session = request.getSession();
+
+		String codigoPasaje = (String) session.getAttribute("codigoPasajeSession");
+		
+		System.out.println(codigoPasaje);
 		
 		switch (operacion) {
 
@@ -68,7 +74,7 @@ public class PasajeServlet extends HttpServlet {
 
 			try {
 				request.getRequestDispatcher("/newPasaje.jsp?origen=" + origen + "&&destino=" + destino
-						+ "&&fechaDestino=" + fechaDestino + "&&codigoViaje=" + codigoViaje +"&&precioViaje=" + precioViaje).forward(request, response);
+						+ "&&fechaDestino=" + fechaDestino + "&&codigoViaje=" + codigoViaje +"&&precioViaje=" + precioViaje + "&&codigoPasaje=" + codigoPasaje).forward(request, response);
 			} catch (ServletException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -80,7 +86,6 @@ public class PasajeServlet extends HttpServlet {
 		case "listarPasajeCliente":
 			listarReservaCliente(request, response);
 			break;
-
 		default:
 			break;
 		}

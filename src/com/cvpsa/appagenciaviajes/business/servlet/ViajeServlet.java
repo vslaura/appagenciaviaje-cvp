@@ -55,10 +55,14 @@ public class ViajeServlet extends HttpServlet {
 		case "listarViajesPorOrigenDestinoFecha":
 			listarViajesPorOrigenDestinoFecha (request, response);
 			break;
-
 		default:
 			break;
 		}
+		
+	}
+
+	private void actualizarPasaje(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
 		
 	}
 
@@ -67,6 +71,8 @@ public class ViajeServlet extends HttpServlet {
 		String codigoOrigen = request.getParameter("cboDepartamentoPartida");
 		String codigoDestino = request.getParameter("cboDepartamentoLlegada");
 		String fecha = request.getParameter("dtFechaSalida");
+		
+		String codigoPasaje = request.getParameter("codigoPasaje");
 		
 		ViajeService viajeService = new ViajeService();
 		
@@ -83,7 +89,10 @@ public class ViajeServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("listadoViajesPorOrigenDestinoFecha", listadoViajes);
-		System.out.println(session.getServletContext().getContextPath());
+		
+		session.setAttribute("codigoPasajeSession", codigoPasaje);
+		
+//		System.out.println(session.getServletContext().getContextPath());
 		
 		// return "<a href='Frm_Pasaje.jsp?origen=" + origen +"&&destino=" + destino +"&&fechaDestino="+fechaDestino+"'>Seleccionar</a>";
 		

@@ -81,6 +81,9 @@
 			<h2>Reserva de pasajes</h2>
 			<div class="menu-viaje">
 				<form action="">
+					
+					<input type="hidden" value="${param.codigoPasaje}" name="codigoPasaje">
+				
 					<input type="hidden" value="listarViajesPorOrigenDestinoFecha"
 						name="operacion"> <label>Origen:</label> <select
 						class="combo" name="cboDepartamentoPartida">

@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.cvpsa.appagenciaviajes.business.bean.ClienteDTO;
-import com.cvpsa.appagenciaviajes.business.bean.PasajeDTO;
 import com.cvpsa.appagenciaviajes.business.services.ClienteService;
 import com.cvpsa.appagenciaviajes.business.services.PasajeService;
 import com.cvpsa.appagenciaviajes.business.utils.Mail;
@@ -259,6 +258,11 @@ public class ClienteServlet extends HttpServlet {
 			
 			
 			PasajeService pasajeService = new PasajeService();
+			
+			System.out.println("Cambiar pasaje");
+			HttpSession session = request.getSession();
+			String codigoPasajeAnterior = ( String )session.getAttribute("codigoPasajeSession");
+			pasajeService.deshabilitarPasajeCliente(codigoPasajeAnterior);
 
 			int resultadoAdquirirPasaje = pasajeService.adquirirPasaje(codCli, fechaReserva, horaReserva, codigoPasaje);
 

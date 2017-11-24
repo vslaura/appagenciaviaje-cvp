@@ -86,7 +86,7 @@ public class Wrapper extends TableDecorator{
 		PasajeDTO pasajeDTO = ( PasajeDTO ) getCurrentRowObject();
 		String codigoPasaje = pasajeDTO.getCodPje();
 		
-		return "<a href='newIndex.jsp'>Seleccionar</a>";
+		return "<a href='newIndex.jsp?codigoPasaje=" + codigoPasaje + "'>Seleccionar</a>";
 	}
 	
 	public String getMostarDescripcionDepartamentoOrigenPasajeWrapper ( ) {
